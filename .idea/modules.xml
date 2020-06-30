@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$USER_HOME$/www/symfony4/bill/.idea/bill.iml" filepath="$USER_HOME$/www/symfony4/bill/.idea/bill.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/mcManager.iml" filepath="$PROJECT_DIR$/.idea/mcManager.iml" />
     </modules>
   </component>
