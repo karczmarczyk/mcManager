@@ -23,11 +23,15 @@ class SshAuthenticator extends AbstractGuardAuthenticator
 
     private $router;
     private $provider;
+    private $sshHost;
+    private $sshPort;
 
-    public function __construct(UrlGeneratorInterface $router, UserProviderInterface $provider)
+    public function __construct(UrlGeneratorInterface $router, UserProviderInterface $provider, $sshHost, $sshPort)
     {
         $this->router = $router;
         $this->provider = $provider;
+        $this->sshHost = $sshHost;
+        $this->sshPort = $sshPort;
     }
 
 
@@ -154,7 +158,7 @@ class SshAuthenticator extends AbstractGuardAuthenticator
      */
     public function checkCredentials($credentials, UserInterface $user)
     {
-        $ssh =  new SSH2('192.168.10.102');
+        $ssh =  new SSH2($this->sshHost, $this->sshPort);
         $ssh->login($user->getUsername(), $user->getPassword());
         return $ssh->isAuthenticated();
     }

@@ -11,10 +11,10 @@ class SshService
 {
     private $ssh;
 
-    public function __construct(TokenStorageInterface $tokenStorage)
+    public function __construct(TokenStorageInterface $tokenStorage, $sshHost, $sshPort)
     {
         $user=$tokenStorage->getToken()->getUser();
-        $this->ssh =  new SSH2('192.168.10.102');
+        $this->ssh =  new SSH2($sshHost, $sshPort);
         if(!$this->ssh->login($user->getUsername(), $user->getPassword())) {
             throw new \Exception("Błąd logowania SSH");
         }
