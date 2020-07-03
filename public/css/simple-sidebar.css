@@ -7,6 +7,10 @@ body {
   overflow-x: hidden;
 }
 
+img.main-logo {
+  width: 200px;
+}
+
 #sidebar-wrapper {
   min-height: 100vh;
   margin-left: -15rem;
