@@ -1,0 +1,21 @@
+{% extends 'index.html.twig' %}
+{% block title %}TIME{% endblock %}
+
+{% block main_content %}
+    <div class="log">
+        <pre id="console">{{ log }}</pre>
+        <input />
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $(document).ready(function () {
+            consoleGoToBottom ('#console');
+        });
+
+        function consoleGoToBottom (selector) {
+            var messageBody = document.querySelector(selector);
+            messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
+        }
+    </script>
+{% endblock %}

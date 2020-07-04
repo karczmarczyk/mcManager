@@ -51,17 +51,6 @@ img.main-logo {
     margin-left: -15rem;
   }
 }
-div.log {
-  height: 70vh;
-  display: flex;
-  flex-direction: column;
-  word-wrap: break-word;
-}
-
-div.log pre {
-  overflow-x: hidden;
-}
-
 body {
   overflow-y: hidden;
   /* Hide vertical scrollbar */
@@ -78,6 +67,22 @@ div.guest-content div.login-card {
   width: 50vw;
   top: 25%;
   left: 25%;
+}
+div.log {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word;
+}
+
+div.log pre {
+  font-size: 12px;
+}
+
+@media (max-width: 768px) {
+  div.log pre {
+    font-size: 10px;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
