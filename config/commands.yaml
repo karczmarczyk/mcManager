@@ -1,0 +1,4 @@
+# Ścieżka do katalogu z serwerem
+getServerPath: '/home/minecraft/server'
+# Pobieranie ostatniego logu
+getCurrentLog: 'cat %serverPath%/logs/latest.log'
