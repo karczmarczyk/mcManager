@@ -1,4 +1,8 @@
 # Ścieżka do katalogu z serwerem
 getServerPath: '/home/minecraft/server'
+# Nazwa SCREENa
+getScreenName: 'minecraft'
 # Pobieranie ostatniego logu
 getCurrentLog: 'cat %serverPath%/logs/latest.log'
+# Szablon dla konsolowej komendy
+getConsoleCommand: 'screen -S %screen% -p 0 -X stuff "%command%\r"'
