@@ -1,20 +1,52 @@
 {% extends 'index.html.twig' %}
+{% import 'helpers/preloader.twig' as preloader %}
+
 {% block title %}TIME{% endblock %}
 
 {% block main_content %}
     <div class="log">
-        <pre id="console">{{ log }}</pre>
-        <input />
+        <pre id="console">{{ preloader.preloaderInline() }}</pre>
+        <input id="command" /><button id="send_command">SEND</button>
     </div>
 {% endblock %}
 {% block javascripts %}
     <script>
+
+        let loadConsoleUrl = "{{ path('current_log')|escape('js') }}";
+        let sendCommandUrl = "{{ path('send_command')|escape('js') }}";
+
         $(document).ready(function () {
-            consoleGoToBottom ('#console');
+            load();
         });
 
+        $('#command').keypress(function (e) {
+            if (e.which == 13) {
+                send ();
+            }
+        });
+
+        $('#send_command').click(function () {
+            send ();
+        });
+
+        function load () {
+            $.get( loadConsoleUrl, function( data ) {
+                $( "#console" ).html( data );
+                consoleGoToBottom ('#console');
+            });
+        }
+
+        function send () {
+            let data = $('#command').val();
+            $.post( sendCommandUrl, {command: data})
+                .done(function(){
+                    load();
+                    $('#command').val("");
+                });
+        }
+
         function consoleGoToBottom (selector) {
-            var messageBody = document.querySelector(selector);
+            let messageBody = document.querySelector(selector);
             messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
         }
     </script>

@@ -53,10 +53,23 @@ class CommandService
         return $this->configValues['getServerPath'];
     }
 
+    public function getScreenName ():String
+    {
+        return $this->configValues['getScreenName'];
+    }
+
     public function getCurrentLog ():String
     {
         return $this->bind($this->configValues['getCurrentLog'],[
             'serverPath' => $this->getServerPath()
+        ]);
+    }
+
+    public function getConsoleCommand (String $command):String
+    {
+        return $this->bind($this->configValues['getConsoleCommand'],[
+            'command' => $command,
+            'screen' => $this->getScreenName()
         ]);
     }
 }

@@ -11,6 +11,14 @@ img.main-logo {
   width: 200px;
 }
 
+div.preloader-inline {
+  text-align: center;
+}
+div.preloader-inline img {
+  height: 250px;
+  border: 1px solid black;
+}
+
 #sidebar-wrapper {
   min-height: 100vh;
   margin-left: -15rem;

@@ -5,10 +5,19 @@
  */
 body {
   overflow-x: hidden;
+  //background-image: url("/images/stone.png");
 }
 
 img.main-logo {
   width: 200px;
+}
+
+div.preloader-inline {
+  text-align: center;
+  img {
+    height: 250px;
+    border: 1px solid black;
+  }
 }
 
 #sidebar-wrapper {
