@@ -82,14 +82,19 @@ div.guest-content div.login-card {
   top: 25%;
   left: 25%;
 }
-div.log {
-  height: 70vh;
+div.console-container div.log {
+  height: 80vh;
   display: flex;
   flex-direction: column;
   word-wrap: break-word;
 }
-
-div.log pre {
+div.console-container div.log div.console-control {
+  display: flex;
+}
+div.console-container div.log div.console-control * {
+  border-radius: 0px;
+}
+div.console-container div.log pre {
   font-size: 12px;
 }
 

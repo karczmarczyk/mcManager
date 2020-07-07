@@ -3,6 +3,8 @@
 
 namespace App\Controller;
 
+use App\Form\Model\CommandForm;
+use App\Form\Type\CommandType;
 use App\Service\CommandService;
 use App\Service\SshService;
 use Symfony\Component\HttpFoundation\Request;
@@ -39,8 +41,20 @@ class ConsoleController extends AbstractController
      */
     public function sendCommandAction (Request $request, SshService $sshService, CommandService $commandService)
     {
-        $command = $request->get('command');
-        $sshService->getSsh()->exec($commandService->getConsoleCommand($command));
-        return new Response();
+        $model = new CommandForm();
+
+        $form = $this->createForm(CommandType::class, $model);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $model = $form->getData();
+
+            $command = $model->getCommand();//$request->get('command');
+            $sshService->getSsh()->exec($commandService->getConsoleCommand($command));
+        } else {
+            return $this->json(['errorMsg'=>$form->getErrors()], 400);
+        }
+
+        return new Response("ok");
     }
 }
