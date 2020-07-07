@@ -1,11 +1,27 @@
-div.log {
-  height: 70vh;
-  display: flex;
-  flex-direction: column;
-  word-wrap: break-word;
-}
-div.log pre {
-  font-size: 12px;
+div.console-container {
+
+ div.log {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+
+    div.console-control {
+      display: flex;
+
+      button {
+
+      }
+
+      * {
+        border-radius: 0px;
+      }
+    }
+
+    pre {
+      font-size: 12px;
+    }
+  }
 }
 
 @media (max-width: 768px) {

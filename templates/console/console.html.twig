@@ -4,9 +4,22 @@
 {% block title %}TIME{% endblock %}
 
 {% block main_content %}
-    <div class="log">
-        <pre id="console">{{ preloader.preloaderInline() }}</pre>
-        <input id="command" /><button id="send_command">SEND</button>
+    <div class="console-container">
+        <div class="log">
+            <pre id="console">{{ preloader.preloaderInline() }}</pre>
+            <div class="console-control">
+                <input
+                        class="form-control"
+                        placeholder="wpisz komendę.."
+                        name="command[command]"
+                        required="required"
+                        id="command" />
+                <button
+                        class="btn btn-primary"
+                        title="send.."
+                        id="send_command"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+            </div>
+        </div>
     </div>
 {% endblock %}
 {% block javascripts %}
@@ -42,10 +55,14 @@
 
         function send () {
             let data = $('#command').val();
-            $.post( sendCommandUrl, {command: data})
+            let token = "{{ csrf_token('command_token') }}";
+            $.post( sendCommandUrl, {command: {command:data, _token: token}})
                 .done(function(){
                     load();
                     $('#command').val("");
+                })
+                .fail(function(response){
+                    alert("Nieoczekiwany błąd");
                 });
         }
 
