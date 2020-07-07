@@ -30,7 +30,7 @@ class ConsoleController extends AbstractController
     public function getCurrentLogAction (SshService $sshService, CommandService $commandService)
     {
         $log = $sshService->getSsh()->exec($commandService->getCurrentLog());
-        return new Response($log);
+        return $this->json(['data' => $log]);
     }
 
     /**
