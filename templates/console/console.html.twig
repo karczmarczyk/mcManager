@@ -31,7 +31,11 @@
 
         function load () {
             $.get( loadConsoleUrl, function( data ) {
-                $( "#console" ).html( data );
+                if (data.data) {
+                    $("#console").html(data.data);
+                } else {
+                    document.location.reload();
+                }
                 consoleGoToBottom ('#console');
             });
         }
