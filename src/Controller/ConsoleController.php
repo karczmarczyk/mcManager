@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use App\Form\Model\CommandForm;
 use App\Form\Type\CommandType;
+use App\Service\AvailableCommandService;
 use App\Service\CommandService;
 use App\Service\SshService;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,9 +19,11 @@ class ConsoleController extends AbstractController
      * @Route("/", name="app_main")
      * @Route("/console", name="console")
      */
-    public function indexAction()
+    public function indexAction(AvailableCommandService $availableCommandService)
     {
-        return $this->render('console/console.html.twig');
+        return $this->render('console/console.html.twig', [
+            'availableCommands' => $availableCommandService->getAllWithDescAsJson()
+        ]);
     }
 
     /**
