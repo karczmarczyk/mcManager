@@ -1,26 +1,39 @@
 div.console-container {
 
  div.log {
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    word-wrap: break-word;
+   height: 80vh;
+   display: flex;
+   flex-direction: column;
+   word-wrap: break-word;
 
-    div.console-control {
-      display: flex;
+   div.console-control {
+     display: flex;
 
-      button {
+     button {
 
-      }
+     }
 
-      * {
-        border-radius: 0px;
-      }
-    }
+     * {
+       border-radius: 0px;
+     }
+   }
 
-    pre {
-      font-size: 12px;
-    }
+   pre {
+     font-size: 12px;
+   }
+ }
+}
+
+span.ui-autocomplete-label {
+  color: #28a745;
+}
+span.ui-autocomplete-desc {
+  color: #999;
+}
+
+li.ui-menu-item:hover {
+  span {
+    color: white;
   }
 }
 

@@ -1,0 +1,254 @@
+/calculate: Evaluate a mathematical expression
+/center: Set the center block(s)
+/chunk: Set the selection to your current chunk.
+/contract: Contract the selection area
+/copy: Copy the selection to the clipboard
+/count: Counts the number of blocks matching a mask
+/curve: Draws a spline through selected points
+/cut: Cut the selection to the clipboard
+/cyl: Generates a cylinder.
+/deform: Deforms a selected region with an expression
+/distr: Get the distribution of blocks in the selection
+/drain: Drain a pool
+/drawsel: Toggle drawing the current selection
+/expand: Expand the selection area
+/faces: Build the walls, ceiling, and floor of a selection
+/fast: Toggle fast mode
+/fill: Fill a hole
+/fillr: Fill a hole recursively
+/flip: Flip the contents of the clipboard across the origin
+/flora: Make flora within the region
+/forest: Make a forest within the region
+/generate: Generates a shape according to a formula.
+/generatebiome: Sets biome according to a formula.
+/hcyl: Generates a hollow cylinder.
+/help: Displays help for WorldEdit commands
+/hollow: Hollows out the object contained in this selection
+/hpos1: Set position 1 to targeted block
+/hpos2: Set position 2 to targeted block
+/hpyramid: Generate a hollow pyramid
+/hsphere: Generates a hollow sphere.
+/inset: Inset the selection area
+/limit: Modify block change limit
+/line: Draws line segments between cuboid selection corners or convex polyhedral selection vertices
+/move: Move the contents of the selection
+/naturalize: 3 layers of dirt on top then rock below
+/outset: Outset the selection area
+/overlay: Set a block on top of blocks in the region
+/paste: Paste the clipboard's contents
+/pos1: Set position 1
+/pos2: Set position 2
+/pyramid: Generate a filled pyramid
+/regen: Regenerates the contents of the selection
+/reorder: Sets the reorder mode of WorldEdit
+/replace: Replace all blocks in the selection with another
+/rotate: Rotate the contents of the clipboard
+/sel: Choose a region selector
+/set: Sets all the blocks in the region
+/setbiome: Sets the biome of your current block or region.
+/shift: Shift the selection area
+/size: Get information about the selection
+/smooth: Smooth the elevation in the selection
+/sphere: Generates a filled sphere.
+/stack: Repeat the contents of the selection
+/timeout: Modify evaluation timeout time.
+/walls: Build the four sides of the selection
+/wand: Get the wand object
+/watchdog: Changes watchdog hook state.
+/world: Sets the world override
+advancement: A Mojang provided command.
+allowfire: Allows all fire spread temporarily
+ascend: Go up a floor
+authme: AuthMe op commands
+ban: A Mojang provided command.
+ban-ip: A Mojang provided command.
+banlist: A Mojang provided command.
+biomeinfo: Get the biome of the targeted block.
+biomelist: Gets all biomes available.
+bossbar: A Mojang provided command.
+brush: Brushing commands
+butcher: Kill all or nearby mobs
+cannons: Info how to use/build/adjust a cannon and to reload the plugin.
+captcha: Captcha command
+ceil: Go to the ceiling
+changepassword: Change password of an account
+chunkinfo: Get information about the chunk you're inside
+clear: A Mojang provided command.
+clearclipboard: Clear your clipboard
+clearhistory: Clear your history
+clone: A Mojang provided command.
+cs: Execute a CraftScript
+cycler: Block data cycler tool
+data: A Mojang provided command.
+datapack: A Mojang provided command.
+dc: List of commands
+debug: A Mojang provided command.
+defaultgamemode: A Mojang provided command.
+delchunks: Delete chunks that your selection includes
+deltree: Floating tree remover tool
+deop: A Mojang provided command.
+descend: Go down a floor
+difficulty: A Mojang provided command.
+effect: A Mojang provided command.
+email: Add email or recover password
+enchant: A Mojang provided command.
+environment: Gives you some general information (OS related)
+execute: A Mojang provided command.
+experience: A Mojang provided command.
+extinguish: Extinguish nearby fire
+farwand: Wand at a distance tool
+fill: A Mojang provided command.
+filter: Add or remove programmable filters to the packet listeners.
+fixlava: Fix lava to be stationary
+fixwater: Fix water to be stationary
+floodfill: Flood fill tool
+forceload: A Mojang provided command.
+forestgen: Generate a forest
+function: A Mojang provided command.
+gamemode: A Mojang provided command.
+gamerule: A Mojang provided command.
+give: A Mojang provided command.
+giveflightmedallion:
+gmask: Set the global mask
+graph: Gives you visual graph about your server
+green: Converts dirt to grass blocks in the area
+halt-activity: Attempts to cease as much activity in order to stop lag
+heap: Heap dump about your current memory
+help: Shows the help menu
+info: Block information tool
+jfr: Manages the Java Flight Recordings of the native Java VM. It gives you much more detailed informatio
+jumpto: Teleport to a location
+kick: A Mojang provided command.
+kill: A Mojang provided command.
+lagmonitor: Gets displays the help page of all lagmonitor commands
+lagpage: Pages command for the current pagination session
+list: A Mojang provided command.
+listchunks: List chunks that your selection includes
+locate: A Mojang provided command.
+login: Login command
+logout: Logout command
+loot: A Mojang provided command.
+lrbuild: Long-range building tool
+luckperms: Manage permissions
+mask: Set the brush mask
+material: Set the brush material
+mbean: Outputs mbeans attributes (java environment information)
+me: A Mojang provided command.
+minecraft:help: A Mojang provided command.
+minecraft:lp: A Mojang provided command.
+minecraft:luckperms: A Mojang provided command.
+minecraft:luckperms:lp: A Mojang provided command.
+minecraft:luckperms:luckperms: A Mojang provided command.
+minecraft:luckperms:perm: A Mojang provided command.
+minecraft:luckperms:permission: A Mojang provided command.
+minecraft:luckperms:permissions: A Mojang provided command.
+minecraft:luckperms:perms: A Mojang provided command.
+minecraft:perm: A Mojang provided command.
+minecraft:permission: A Mojang provided command.
+minecraft:permissions: A Mojang provided command.
+minecraft:perms: A Mojang provided command.
+minecraft:reload: A Mojang provided command.
+monitor: Monitors the CPU usage of methods
+msg: A Mojang provided command.
+mspt: View server tick times
+mythicmobs: MythicMobs base command
+mythicmobslegacy: MythicMobs Legacy Commands
+native: Gives you information about your Hardware
+navwand: Navigation wand tool
+network: Gives you information about your Network configuration
+none: Unbind a bound tool from your current item
+op: A Mojang provided command.
+packet: Add or remove a simple packet listener.
+packetlog: Logs hex representations of packets to a file or console
+paper: Paper related commands
+pardon: A Mojang provided command.
+pardon-ip: A Mojang provided command.
+particle: A Mojang provided command.
+ping: Gets the ping of the selected player
+playsound: A Mojang provided command.
+plugins: Gets a list of plugins running on the server
+protocol: Performs administrative tasks regarding ProtocolLib.
+publish: A Mojang provided command.
+pumpkins: Generate pumpkin patches
+range: Set the brush range
+recipe: A Mojang provided command.
+redo: Redoes the last action (from history)
+region: Region management commands
+register: Register an account
+reload: Reloads the server configuration and plugins
+remove: Remove all entities of a type
+removeabove: Remove blocks above your head.
+removebelow: Remove blocks below you.
+removenear: Remove blocks near you.
+repl: Block replacer tool
+replaceitem: A Mojang provided command.
+replacenear: Replace nearby blocks
+restart: Restarts the server
+restore: Restore the selection from a snapshot
+save-all: A Mojang provided command.
+save-off: A Mojang provided command.
+save-on: A Mojang provided command.
+say: A Mojang provided command.
+schedule: A Mojang provided command.
+schematic: Schematic commands for saving/loading areas
+scoreboard: A Mojang provided command.
+searchitem: Search for an item
+seed: A Mojang provided command.
+selwand: Selection wand tool
+setblock: A Mojang provided command.
+setidletimeout: A Mojang provided command.
+setworldspawn: A Mojang provided command.
+silkspawners: Command for changing and getting spawners or spawn eggs
+size: Set the brush size
+snapshot: Snapshot commands for restoring backups
+snow: Simulates snow
+spawnmob: Spawn a mob
+spawnpoint: A Mojang provided command.
+spectate: A Mojang provided command.
+spigot: Spigot related commands
+spreadplayers: A Mojang provided command.
+stacktrace: Gets the execution stacktrace of selected thread
+stop: A Mojang provided command.
+stopfire: Disables all fire spread temporarily
+stopsound: A Mojang provided command.
+summon: A Mojang provided command.
+superpickaxe: Super-pickaxe commands
+system: Gives you some general information (Minecraft server related)
+tag: A Mojang provided command.
+tasks: Information about running and pending tasks
+team: A Mojang provided command.
+teammsg: A Mojang provided command.
+teleport: A Mojang provided command.
+tell: A Mojang provided command.
+tellraw: A Mojang provided command.
+thaw: Thaws the area
+thread: Outputs all running threads with their current state
+thru: Pass through walls
+time: A Mojang provided command.
+timing: Outputs your server timings ingame
+timings: Manages Spigot Timings data to see performance of the server.
+title: A Mojang provided command.
+tm: A Mojang provided command.
+toggleeditwand: Remind the user that the wand is now a tool and can be unbound with /none.
+toggleplace: Switch between your position and pos1 for placement
+tool: Binds a tool to the item in your hand
+totp: TOTP commands
+tp: A Mojang provided command.
+tps: Gets the current ticks per second for the server
+tpshistory: Outputs the current tps
+tracemask: Set the mask used to stop tool traces
+tree: Tree generator tool
+trigger: A Mojang provided command.
+undo: Undoes the last action (from history)
+unregister: Unregister an account
+unstuck: Escape from being stuck inside a block
+up: Go upwards some distance
+verification: Verification command
+version: Gets the version of this server including any plugins in use
+vm: Gives you information about your Hardware
+w: A Mojang provided command.
+weather: A Mojang provided command.
+whitelist: A Mojang provided command.
+worldborder: A Mojang provided command.
+worldedit: WorldEdit commands
+worldguard: WorldGuard commands

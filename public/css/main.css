@@ -98,6 +98,18 @@ div.console-container div.log pre {
   font-size: 12px;
 }
 
+span.ui-autocomplete-label {
+  color: #28a745;
+}
+
+span.ui-autocomplete-desc {
+  color: #999;
+}
+
+li.ui-menu-item:hover span {
+  color: white;
+}
+
 @media (max-width: 768px) {
   div.log pre {
     font-size: 10px;

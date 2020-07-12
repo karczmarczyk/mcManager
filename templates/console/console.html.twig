@@ -19,6 +19,7 @@
                         title="send.."
                         id="send_command"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
             </div>
+
         </div>
     </div>
 {% endblock %}
@@ -27,10 +28,20 @@
 
         let loadConsoleUrl = "{{ path('current_log')|escape('js') }}";
         let sendCommandUrl = "{{ path('send_command')|escape('js') }}";
+        let availableCommands = {{ availableCommands | raw }};
 
         $(document).ready(function () {
             load();
         });
+
+        $('#command').autocomplete({
+            source: availableCommands,
+            position: { my : "right bottom", at: "right top", collision: "none" }
+        }).autocomplete( "instance" )._renderItem = function( ul, item ) {
+            return $( "<li>" )
+                .append( "<div><span class='ui-autocomplete-label'>" + item.label + '</span> - <span class="ui-autocomplete-desc">' + item.desc + "</span></div>" )
+                .appendTo( ul );
+        };
 
         $('#command').keypress(function (e) {
             if (e.which == 13) {
