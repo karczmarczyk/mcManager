@@ -39,7 +39,7 @@
             position: { my : "right bottom", at: "right top", collision: "none" }
         }).autocomplete( "instance" )._renderItem = function( ul, item ) {
             return $( "<li>" )
-                .append( "<div><span class='ui-autocomplete-label'>" + item.label + '</span> - <span class="ui-autocomplete-desc">' + item.desc + "</span></div>" )
+                .append( "<div><span class='ui-autocomplete-label'>" + item.label + '</span><span class="mobile-hide"> - </span><span class="ui-autocomplete-desc mobile-hide">' + item.desc + "</span></div>" )
                 .appendTo( ul );
         };
 
