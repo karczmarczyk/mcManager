@@ -57,6 +57,7 @@
             $.get( loadConsoleUrl, function( data ) {
                 if (data.data) {
                     $("#console").html(data.data);
+                    Preloader.hide();
                 } else {
                     document.location.reload();
                 }
@@ -65,6 +66,7 @@
         }
 
         function send () {
+            Preloader.show();
             let data = $('#command').val();
             let token = "{{ csrf_token('command_token') }}";
             $.post( sendCommandUrl, {command: {command:data, _token: token}})
@@ -73,6 +75,7 @@
                     $('#command').val("");
                 })
                 .fail(function(response){
+                    Preloader.hide();
                     alert("Nieoczekiwany błąd");
                 });
         }
