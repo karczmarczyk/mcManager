@@ -6,3 +6,9 @@ getScreenName: 'minecraft'
 getCurrentLog: 'cat %serverPath%/logs/latest.log'
 # Szablon dla konsolowej komendy
 getConsoleCommand: 'screen -S %screen% -p 0 -X stuff "%command%\r"'
+# CPU usage
+getCpuUsage: 'mpstat -P ALL 1 1 | grep Średnia'
+# MEMORY usage
+getMemoryUsage: "egrep 'Mem|Cache|Swap' /proc/meminfo"
+# DISC usage
+getDiscUsage: 'df -Th | grep /dev/sda1'

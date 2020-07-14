@@ -72,4 +72,19 @@ class CommandService
             'screen' => $this->getScreenName()
         ]);
     }
+
+    public function getCpuUsage ()
+    {
+        return $this->configValues['getCpuUsage'];
+    }
+
+    public function getMemoryUsage ()
+    {
+        return $this->configValues['getMemoryUsage'];
+    }
+
+    public function getDiscUsage ()
+    {
+        return $this->configValues['getDiscUsage'];
+    }
 }

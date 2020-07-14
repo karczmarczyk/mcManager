@@ -27,6 +27,7 @@ class LayoutController extends AbstractController
     public function mainMenu (Request $request) {
         $current = $request->get('current');
         $menu = [
+            ['label'=>'Serwer', 'href'=>$this->router->generate('server'), 'isActive'=>$current=='server'],
             ['label'=>'Konsola', 'href'=>$this->router->generate('console'), 'isActive'=>$current=='console' || $current=='app_main'],
 //            ['label'=>'Logi', 'href'=>$this->router->generate('console'), 'isActive'=>$current=='console' || $current=='app_main'],
 //            ['label'=>'System', 'href'=>$this->router->generate('console'), 'isActive'=>$current=='console' || $current=='app_main'],

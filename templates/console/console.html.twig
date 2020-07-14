@@ -1,7 +1,7 @@
 {% extends 'index.html.twig' %}
 {% import 'helpers/preloader.twig' as preloader %}
 
-{% block title %}TIME{% endblock %}
+{% block title %}Konsola{% endblock %}
 
 {% block main_content %}
     <div class="console-container">
@@ -85,4 +85,12 @@
             messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
         }
     </script>
+{% endblock %}
+{% block stylesheets %}
+    <style>
+        body {
+            overflow-y: hidden; /* Hide vertical scrollbar */
+            overflow-x: hidden; /* Hide horizontal scrollbar */
+        }
+    </style>
 {% endblock %}
