@@ -6,8 +6,10 @@
 {% block main_content %}
     <div class="console-container">
         <div class="log">
+{#            <img id="command_loader" src="/images/command-loader.gif">#}
             <pre id="console">{{ preloader.preloaderInline() }}</pre>
             <div class="console-control">
+                <img id="input_loader" src="/images/input-loader.gif">
                 <input
                         class="form-control"
                         placeholder="wpisz komendę.."
@@ -29,6 +31,8 @@
         let loadConsoleUrl = "{{ path('current_log')|escape('js') }}";
         let sendCommandUrl = "{{ path('send_command')|escape('js') }}";
         let availableCommands = {{ availableCommands | raw }};
+
+        let blockForm = false;
 
         $(document).ready(function () {
             load();
@@ -57,7 +61,7 @@
             $.get( loadConsoleUrl, function( data ) {
                 if (data.data) {
                     $("#console").html(data.data);
-                    Preloader.hide();
+                    $('#input_loader').hide();
                 } else {
                     document.location.reload();
                 }
@@ -66,17 +70,23 @@
         }
 
         function send () {
-            Preloader.show();
+            if (blockForm) return;
+            blockForm = true;
+            $('#input_loader').show();
+            $('#command').autocomplete("close");
             let data = $('#command').val();
             let token = "{{ csrf_token('command_token') }}";
+
             $.post( sendCommandUrl, {command: {command:data, _token: token}})
                 .done(function(){
                     load();
                     $('#command').val("");
+                    blockForm = false;
                 })
                 .fail(function(response){
-                    Preloader.hide();
+                    $('#input_loader').hide();
                     alert("Nieoczekiwany błąd");
+                    blockForm = false;
                 });
         }
 
