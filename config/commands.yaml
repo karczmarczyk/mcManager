@@ -12,3 +12,7 @@ getCpuUsage: 'mpstat -P ALL 1 1 | grep Średnia'
 getMemoryUsage: "egrep 'Mem|Cache|Swap' /proc/meminfo"
 # DISC usage
 getDiscUsage: 'df -Th | grep /dev/sda1'
+# Uptime
+getUptime: 'uptime'
+# Date
+getDate: 'date'

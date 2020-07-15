@@ -22,6 +22,8 @@ class SystemStatService
         $stat['cpu'] = $this->getCpuUsage();
         $stat['memory'] = $this->getMemoryUsage();
         $stat['disc'] = $this->getDiscUsage();
+        $stat['uptime'] = $this->getUptime();
+        $stat['date'] = $this->getDate();
         return $stat;
     }
 
@@ -102,4 +104,27 @@ class SystemStatService
     return $disc;
     }
 
+    /**
+     *
+     */
+    public function getDate ()
+    {
+        $result = $this->conn->getSsh()->exec($this->commandService->getDate());
+
+        $lines = explode("\n", $result);
+
+        return $lines[0];
+    }
+
+    /**
+     *
+     */
+    public function getUptime ()
+    {
+        $result = $this->conn->getSsh()->exec($this->commandService->getUptime());
+
+        $lines = explode("\n", $result);
+
+        return $lines[0];
+    }
 }
