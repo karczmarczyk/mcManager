@@ -87,4 +87,14 @@ class CommandService
     {
         return $this->configValues['getDiscUsage'];
     }
+
+    public function getUptime ()
+    {
+        return $this->configValues['getUptime'];
+    }
+
+    public function getDate ()
+    {
+        return $this->configValues['getDate'];
+    }
 }

@@ -4,128 +4,10 @@
 
 {% block main_content %}
 
-    <h1>Server</h1>
+    <h1>Serwer</h1>
 
-    <div class="row align-items-stretch">
-        <div class="col-lg-6">
-            <div class="card">
-                <div class="card-header">CPU</div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-6 guageMeterContainer">
-                            <div class="GaugeMeter"
-                                 data-percent="{{ stats.cpu.CPU_0 | round }}"
-                                 data-label="CPU 1"
-                                 data-append="%"
-                                 data-size="300"
-                                 data-theme="DarkBlue-LightBlue"
-                            >
-                            </div>
-                        </div>
-                        <div class="col-sm-6 guageMeterContainer">
-                            <div class="GaugeMeter"
-                                 data-percent="{{ stats.cpu.CPU_1 | round }}"
-                                 data-label="CPU 2"
-                                 data-append="%"
-                                 data-size="300"
-                                 data-theme="DarkBlue-LightBlue"
-                            >
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-6">
-            <div class="card">
-                <div class="card-header">Memory</div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-6 guageMeterContainer">
-                            <div class="GaugeMeter"
-                                 data-percent="{{  (((stats.memory.MemTotal.value-stats.memory.MemFree.value) * 100) / stats.memory.MemTotal.value) | round }}"
-                                 data-label="Memory"
-                                 data-append="%"
-                                 data-size="200"
-                                 data-theme="DarkBlue-LightBlue"
-                            >
-                            </div>
-                            <table class="table">
-                                <tr>
-                                    <th>MemTotal</th><td>{{ stats.memory.MemTotal.value }} {{ stats.memory.MemTotal.unit }}</td>
-                                </tr>
-                                <tr>
-                                    <th>MemFree</th><td>{{ stats.memory.MemFree.value }} {{ stats.memory.MemFree.unit }}</td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="col-sm-6 guageMeterContainer">
-                            <div class="GaugeMeter"
-                                 data-percent="{{  (((stats.memory.SwapTotal.value-stats.memory.SwapFree.value) * 100) / stats.memory.SwapTotal.value) | round }}"
-                                 data-label="SWAP"
-                                 data-append="%"
-                                 data-size="200"
-                                 data-theme="DarkBlue-LightBlue"
-                            >
-                            </div>
-                            <table class="table">
-                                <tr>
-                                    <th>SwapTotal</th><td>{{ stats.memory.SwapTotal.value }} {{ stats.memory.SwapTotal.unit }}</td>
-                                </tr>
-                                <tr>
-                                    <th>SwapFree</th><td>{{ stats.memory.SwapFree.value }} {{ stats.memory.SwapFree.unit }}</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row align-items-stretch">
-        <div class="col-lg-6">
-            <div class="card">
-                <div class="card-header">Disc usage</div>
-                <div class="card-body">
-                    {% for key, disc in stats.disc %}
-                        <div class="row">
-                            <div class="col-sm-6 guageMeterContainer">
-                                    <div class="GaugeMeter"
-                                         data-percent="{{  disc.percent_value | round }}"
-                                         data-label="DISC"
-                                         data-append="%"
-                                         data-size="200"
-                                         data-theme="DarkBlue-LightBlue"
-                                    >
-                                    </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <table class="table">
-                                    <tr>
-                                        <th colspan="2">{{ key }}</th>
-                                    </tr>
-                                    <tr>
-                                        <th>sys</th>
-                                        <td>{{ disc.sys }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Total</th>
-                                        <td>{{ disc.full }}</td>
-                                    </tr>
-                                        <th>Used</th>
-                                        <td>{{ disc.used }}</td>
-                                    </tr>
-                                        <th>Free</th>
-                                        <td>{{ disc.free }}</td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
+    <div id="statfull">
+        wczytuję..
     </div>
 
 {% endblock %}
@@ -135,5 +17,23 @@
         $(function () {
             $(".GaugeMeter").gaugeMeter();
         });
+
+        let loadStatUrl = "{{ path('getStat')|escape('js') }}";
+
+        function loadStat () {
+            $.get( loadStatUrl, function( data ) {
+                if (data) {
+                    $("#statfull").html(data);
+                    $(".GaugeMeter").gaugeMeter();
+                    setTimeout(function() {
+                        loadStat();
+                    }, 1000);
+                }
+            });
+        };
+
+        loadStat ();
+
+
     </script>
 {% endblock %}

@@ -103,6 +103,9 @@ a.list-group-item-active {
   width: 100%;
 }
 
+.align-items-stretch {
+  margin-bottom: 25px;
+}
 .align-items-stretch .card {
   height: 100%;
 }
