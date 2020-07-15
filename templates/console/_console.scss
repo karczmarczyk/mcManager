@@ -42,3 +42,18 @@ li.ui-menu-item:hover {
     font-size: 10px;
   }
 }
+
+#command_loader {
+  width: 50px;
+  position: absolute;
+  right: 50px;
+  top: 75px;
+}
+
+#input_loader {
+  display: none;
+  position: absolute;
+  height: 75px;
+  right: 25px;
+  margin-top: -18px;
+}
