@@ -97,4 +97,24 @@ class CommandService
     {
         return $this->configValues['getDate'];
     }
+
+    public function getMcServerStatus ()
+    {
+        return $this->configValues['getMcServerStatus'];
+    }
+
+    public function getMcServerRestart ()
+    {
+        return $this->configValues['getMcServerRestart'];
+    }
+
+    public function getMcServerStop ()
+    {
+        return $this->configValues['getMcServerStop'];
+    }
+
+    public function getMcServerStart ()
+    {
+        return $this->configValues['getMcServerStart'];
+    }
 }

@@ -29,7 +29,7 @@ class LayoutController extends AbstractController
         $menu = [
             ['label'=>'Serwer', 'href'=>$this->router->generate('server'), 'isActive'=>$current=='server'],
             ['label'=>'Konsola', 'href'=>$this->router->generate('console'), 'isActive'=>$current=='console' || $current=='app_main'],
-//            ['label'=>'Logi', 'href'=>$this->router->generate('console'), 'isActive'=>$current=='console' || $current=='app_main'],
+            ['label'=>'Panel sterowania', 'href'=>$this->router->generate('control_panel'), 'isActive'=>$current=='control_panel'],
 //            ['label'=>'System', 'href'=>$this->router->generate('console'), 'isActive'=>$current=='console' || $current=='app_main'],
         ];
 

@@ -36,6 +36,10 @@
 
         $(document).ready(function () {
             load();
+            setInterval(function(){
+                if (blockForm) return;
+                load();
+            }, 3000);
         });
 
         $('#command').autocomplete({

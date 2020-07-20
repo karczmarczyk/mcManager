@@ -1,0 +1,45 @@
+{% extends 'index.html.twig' %}
+
+{% block title %}Panel sterowania{% endblock %}
+
+{% block main_content %}
+
+    <h1>Panel sterowania</h1>
+
+    <label class="switch">
+        <input id="server_status_switch" name="serverStatus" type="checkbox" {% if isRunning %}checked{% endif %}>
+        <span class="slider"></span>
+    </label>
+    <img id="server_status_switch_loader" class="switch_loader" src="/images/input-loader.gif">
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+
+        let statusCommandUrl = "{{ path('mc_set_status')|escape('js') }}";
+
+        $('#server_status_switch').click (function () {
+
+            $('#server_status_switch_loader').show();
+
+            let status = $('#server_status_switch').is(':checked');
+            let token = "{{ csrf_token('mc_status_token') }}";
+
+            let post = {mc_server: {_token: token}};
+
+            if (status) {
+                post = {mc_server: {serverStatus:status, _token: token}};
+            }
+
+            $.post( statusCommandUrl, post)
+                .done(function(){
+                    $('#server_status_switch_loader').hide();
+                })
+                .fail(function(response){
+                    alert("Nieoczekiwany błąd");
+                    $('#server_status_switch_loader').show();
+                });
+        });
+    </script>
+{% endblock %}

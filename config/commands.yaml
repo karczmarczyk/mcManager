@@ -16,3 +16,11 @@ getDiscUsage: 'df -Th | grep /dev/sda1'
 getUptime: 'uptime'
 # Date
 getDate: 'date'
+# MC server status
+getMcServerStatus: '/home/minecraft/bash/minecraft_backup.sh status'
+# MC server restart
+getMcServerRestart: '/home/minecraft/bash/minecraft_backup.sh restart'
+# MC server stop
+getMcServerStop: '/home/minecraft/bash/minecraft_backup.sh stop'
+# MC server start
+getMcServerStart: '/home/minecraft/bash/minecraft_backup.sh start'
