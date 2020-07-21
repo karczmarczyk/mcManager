@@ -186,3 +186,21 @@ img.switch_loader {
   margin-top: 5px;
   display: none;
 }
+
+div.main_server_info {
+  margin-left: 30px;
+
+  div.power_on {
+    color: white;
+    background: #28a745;
+    border-radius: 10px;
+    padding: 0px 10px;
+  }
+
+  div.power_off {
+    color: white;
+    background: darkred;
+    border-radius: 10px;
+    padding: 0px 10px;
+  }
+}

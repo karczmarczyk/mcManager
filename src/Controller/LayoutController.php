@@ -4,6 +4,9 @@
 namespace App\Controller;
 
 
+use App\Service\CommandService;
+use App\Service\MinecraftServerService;
+use App\Service\SshService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -35,6 +38,24 @@ class LayoutController extends AbstractController
 
         return $this->render('layout/main_menu.html.twig', [
             'menu' => $menu
+        ]);
+    }
+
+    /**
+     * @Route("/app_main_server_info", name="app_main_server_info")
+     */
+    public function mainServerInfo (MinecraftServerService $minecraftServerService, CommandService $commandService, SshService $sshService)
+    {
+        $isRunning = $minecraftServerService->isRunning();
+        $listLoggedIn = "";
+        if ($isRunning) {
+//            $listLoggedInCmd = $commandService->getConsoleCommand("list");
+//            $listLoggedIn = $sshService->getSsh()->exec($listLoggedInCmd);
+        }
+
+        return $this->render('layout/main_server_info.html.twig', [
+            'isRunning' => $isRunning,
+            'listLoggedIn' => $listLoggedIn
         ]);
     }
 }
