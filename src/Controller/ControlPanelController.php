@@ -51,4 +51,17 @@ class ControlPanelController extends AbstractController
 
         return new Response("ok");
     }
+
+    /**
+     * @Route("/createBackup", name="mc_create_backup")
+     */
+    public function mcCreateBackup (Request $request, MinecraftServerService $minecraftServerService)
+    {
+        $token = $request->get('_token');
+        if ($this->isCsrfTokenValid('mc_create_backup', $token)) {
+            $minecraftServerService->createBackup();
+            return new Response("ok");
+        }
+        return new Response("error", 400);
+    }
 }

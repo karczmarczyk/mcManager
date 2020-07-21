@@ -177,6 +177,22 @@ img.switch_loader {
   display: none;
 }
 
+div.main_server_info {
+  margin-left: 30px;
+}
+div.main_server_info div.power_on {
+  color: white;
+  background: #28a745;
+  border-radius: 10px;
+  padding: 0px 10px;
+}
+div.main_server_info div.power_off {
+  color: white;
+  background: darkred;
+  border-radius: 10px;
+  padding: 0px 10px;
+}
+
 div.guest-content div.login-card {
   width: 50vw;
   top: 25%;

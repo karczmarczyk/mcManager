@@ -24,3 +24,5 @@ getMcServerRestart: '/home/minecraft/bash/minecraft_backup.sh restart'
 getMcServerStop: '/home/minecraft/bash/minecraft_backup.sh stop'
 # MC server start
 getMcServerStart: '/home/minecraft/bash/minecraft_backup.sh start'
+# MC server backup
+getMcServerBackup: '/home/minecraft/bash/minecraft_backup.sh backup'
