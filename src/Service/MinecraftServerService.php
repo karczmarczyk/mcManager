@@ -50,4 +50,12 @@ class MinecraftServerService
     {
         $this->conn->getSsh()->exec($this->commandService->getMcServerRestart());
     }
+
+    /**
+     * Backup server
+     */
+    public function createBackup ()
+    {
+        $this->conn->getSsh()->exec($this->commandService->getMcServerBackup());
+    }
 }

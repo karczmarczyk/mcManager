@@ -117,4 +117,9 @@ class CommandService
     {
         return $this->configValues['getMcServerStart'];
     }
+
+    public function getMcServerBackup ()
+    {
+        return $this->configValues['getMcServerBackup'];
+    }
 }
