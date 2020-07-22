@@ -1,0 +1,14 @@
+{% extends 'index.html.twig' %}
+
+{% block title %}Backup{% endblock %}
+
+{% block main_content %}
+
+    <h1>Backup</h1>
+    <ul>
+        {% for file in files %}
+            <li>{{ file.name|e }}</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

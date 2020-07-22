@@ -53,6 +53,11 @@ class CommandService
         return $this->configValues['getServerPath'];
     }
 
+    public function getBackupPath ():String
+    {
+        return $this->configValues['getBackupPath'];
+    }
+
     public function getScreenName ():String
     {
         return $this->configValues['getScreenName'];
