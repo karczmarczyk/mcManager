@@ -1,5 +1,7 @@
 # Ścieżka do katalogu z serwerem
 getServerPath: '/home/minecraft/server'
+# Ścieżka do katalogu z backupem
+getBackupPath: '/home/minecraft/server_backup'
 # Nazwa SCREENa
 getScreenName: 'minecraft'
 # Pobieranie ostatniego logu
