@@ -4,6 +4,7 @@
 namespace App\Controller;
 
 use App\Service\CommandService;
+use App\Service\FileManagerService;
 use App\Service\SshService;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,29 +14,19 @@ class BackupController extends AbstractController
 {
     /**
      * @Route("/backup/index", name="backup_index")
-     * @param SshService $sshService
+     * @param FileManagerService $fileManagerService
+     * @param CommandService $commandService
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction (SshService $sshService, CommandService $commandService)
+    public function indexAction (FileManagerService $fileManagerService,CommandService $commandService)
     {
-        $sftp = $sshService->getSftp();
-        $filesTmp = $sftp->nlist($commandService->getBackupPath());
-
-        sort ($filesTmp);
-
-        $files = [];
-        foreach ($filesTmp as $fileName) {
-            if ($fileName=='.' || $fileName=='..') continue;
-
-            $stat = $sftp->lstat($commandService->getBackupPath().DIRECTORY_SEPARATOR.$fileName);
-            $files[] = [
-                'name' => $fileName,
-                'stat' => $stat,
-            ];
-        }
+        $path = $commandService->getBackupPath();
+        $files = $fileManagerService->getFileList($path);
 
         //print_r($files); exit;
 
         return $this->render('backup/index.html.twig', [
+            'path' => $path,
             'files' => $files
         ]);
     }

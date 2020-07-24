@@ -1,0 +1,36 @@
+.file-browser {
+
+  table {
+
+    thead {
+
+      th {
+        position: sticky;
+        top: 0;
+        background: white;
+      }
+
+    }
+
+    img.fileicon {
+      height: 30px;
+    }
+
+    .icon-col {
+      width: 30px;
+    }
+
+    .name-col {
+
+    }
+
+    .size-col {
+      width: 50px;
+    }
+
+    .date-col {
+      width: 175px;
+    }
+  }
+
+}

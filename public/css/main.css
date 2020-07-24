@@ -290,4 +290,22 @@ li.ui-menu-item:hover span {
   opacity: 0.8;
 }
 
+.file-browser table thead th {
+  position: sticky;
+  top: 0;
+  background: white;
+}
+.file-browser table img.fileicon {
+  height: 30px;
+}
+.file-browser table .icon-col {
+  width: 30px;
+}
+.file-browser table .size-col {
+  width: 50px;
+}
+.file-browser table .date-col {
+  width: 175px;
+}
+
 /*# sourceMappingURL=main.css.map */

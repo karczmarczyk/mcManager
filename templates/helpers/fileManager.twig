@@ -1,0 +1,36 @@
+{% macro browse(path, files) %}
+
+<div class="card file-browser">
+    <div class="card-header">
+        {{ path }}
+    </div>
+    <div class="card-body">
+        <table class="table table-responsive-sm">
+            <thead>
+            <th class="icon-col"></th>
+            <th class="name-col" >{% trans %}Nazwa{% endtrans %}</th>
+            <th class="size-col">{% trans %}Rozmiar{% endtrans %}</th>
+            <th class="date-col">{% trans %}Data modyfikacji{% endtrans %}</th>
+            </thead>
+            <tbody>
+            {% for file in files %}
+                <tr>
+                    <td>{{ _self.fileIcon (file.ext) }}</td>
+                    <td>{{ file.fileName|e }}</td>
+                    <td>{{ file.sizeH }}</td>
+                    <td>{{ file.modifyTimeH }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+    </div>
+    <div class="card-footer"></div>
+</div>
+
+{% endmacro %}
+
+{% macro fileIcon (ext) %}
+    {#    @TODO: obsługa ext #}
+    <img class="fileicon" src="/images/icons/small-n-flat/file-empty.png">
+{% endmacro %}
