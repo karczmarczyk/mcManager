@@ -1,14 +1,13 @@
 {% extends 'index.html.twig' %}
+{% import 'helpers/fileManager.twig' as fileManager %}
 
 {% block title %}Backup{% endblock %}
 
 {% block main_content %}
 
     <h1>Backup</h1>
-    <ul>
-        {% for file in files %}
-            <li>{{ file.name|e }}</li>
-        {% endfor %}
-    </ul>
+
+    {{ fileManager.browse(path, files) }}
+    <br />
 
 {% endblock %}
