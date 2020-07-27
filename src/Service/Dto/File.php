@@ -18,6 +18,18 @@ class File
     public function __construct(String $fileName, String $fileAbsoluteName, Array $fileStat)
     {
         $this->fileName = $fileName;
+        if ($fileName=='..') {
+            $fileAbsoluteNameT = explode(DIRECTORY_SEPARATOR, $fileAbsoluteName);
+            // wyznaczam cofnięcie o 1
+            if (is_array($fileAbsoluteNameT)) {
+            }
+            unset($fileAbsoluteNameT[count($fileAbsoluteNameT) - 1]);
+            unset($fileAbsoluteNameT[count($fileAbsoluteNameT) - 1]);
+            $fileAbsoluteName = implode(DIRECTORY_SEPARATOR, $fileAbsoluteNameT);
+            if ($fileAbsoluteName == '') {
+                $fileAbsoluteName = DIRECTORY_SEPARATOR;
+            }
+        }
         $this->fileAbsoluteName = $fileAbsoluteName;
         $this->fileStat = $fileStat;
     }

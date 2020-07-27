@@ -31,7 +31,7 @@ class FileManagerService
 
         $files = [];
         foreach ($filesTmp as $fileName) {
-            if ($fileName=='.' || $fileName=='..') continue;
+            if ($fileName=='.') continue;
 
             $file = new File(
                 $fileName,
@@ -51,5 +51,14 @@ class FileManagerService
         });
 
         return $files;
+    }
+
+    /**
+     * @param String $filePath
+     * @return String|null
+     */
+    public function getFileContent (String $filePath): ?String
+    {
+        return $this->sftp->exec ("cat ".$filePath);
     }
 }

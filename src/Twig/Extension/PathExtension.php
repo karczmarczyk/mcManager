@@ -23,14 +23,15 @@ class PathExtension extends AbstractExtension
             'url' => DIRECTORY_SEPARATOR
         ];
 
+        $path = str_replace(DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR,
+            DIRECTORY_SEPARATOR, $path);
+
         if ($path==DIRECTORY_SEPARATOR) {
             return $list;
         }
 
-        $path = explode(DIRECTORY_SEPARATOR, $path);
+        $array = explode(DIRECTORY_SEPARATOR, $path);
 
-        $array = str_replace(DIRECTORY_SEPARATOR,
-            DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR, $path);
         unset($array[0]);
         //ini
 
