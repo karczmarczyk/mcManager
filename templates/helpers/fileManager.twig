@@ -17,7 +17,9 @@
                 <tr>
                     <td>
                         {% if (file.isFile()) %}
-                            {{ _self.fileIcon (file.ext) }}
+                            <a href="{{ path('file-manager-preview', {fileManagerFilePath:file.fileAbsoluteName}) }}">
+                                {{ _self.fileIcon (file.ext) }}
+                            </a>
                         {% else %}
                             <a href="{{ path(app.request.attributes.get('_route'), {fileManagerPath:file.fileAbsoluteName}) }}">
                                 <img class="fileicon" src="/images/icons/small-n-flat/folder-green.png">
@@ -26,7 +28,9 @@
                     </td>
                     <td>
                         {% if (file.isFile()) %}
-                            {{ file.fileName|e }}
+                            <a href="{{ path('file-manager-preview', {fileManagerFilePath:file.fileAbsoluteName}) }}">
+                                {{ file.fileName|e }}
+                            </a>
                         {% else %}
                             <a href="{{ path(app.request.attributes.get('_route'), {fileManagerPath:file.fileAbsoluteName}) }}">
                                 {{ file.fileName|e }}
