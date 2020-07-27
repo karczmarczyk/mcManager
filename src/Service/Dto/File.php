@@ -51,7 +51,7 @@ class File
      */
     public function setFileAbsoluteName(String $fileAbsoluteName): void
     {
-        $this->fileAbsoluteName = $fileAbsoluteName;
+            $this->fileAbsoluteName = $fileAbsoluteName;
     }
 
     /**
@@ -145,5 +145,23 @@ class File
             return $fileNameT[count($fileNameT)-1];
         }
         return null;
+    }
+
+    /**
+     * Czy katalog
+     * @return bool
+     */
+    public function isDir ()
+    {
+        return $this->fileStat['type']==2;
+    }
+
+    /**
+     * Czy plik
+     * @return bool
+     */
+    public function isFile ()
+    {
+        return $this->fileStat['type']==1;
     }
 }

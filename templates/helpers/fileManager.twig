@@ -2,7 +2,7 @@
 
 <div class="card file-browser">
     <div class="card-header">
-        {{ path }}
+        {{ _self.path(path) }}
     </div>
     <div class="card-body">
         <table class="table table-responsive-sm">
@@ -15,8 +15,24 @@
             <tbody>
             {% for file in files %}
                 <tr>
-                    <td>{{ _self.fileIcon (file.ext) }}</td>
-                    <td>{{ file.fileName|e }}</td>
+                    <td>
+                        {% if (file.isFile()) %}
+                            {{ _self.fileIcon (file.ext) }}
+                        {% else %}
+                            <a href="{{ path(app.request.attributes.get('_route'), {fileManagerPath:file.fileAbsoluteName}) }}">
+                                <img class="fileicon" src="/images/icons/small-n-flat/folder-green.png">
+                            </a>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if (file.isFile()) %}
+                            {{ file.fileName|e }}
+                        {% else %}
+                            <a href="{{ path(app.request.attributes.get('_route'), {fileManagerPath:file.fileAbsoluteName}) }}">
+                                {{ file.fileName|e }}
+                            </a>
+                        {% endif %}
+                    </td>
                     <td>{{ file.sizeH }}</td>
                     <td>{{ file.modifyTimeH }}</td>
                 </tr>
@@ -33,4 +49,11 @@
 {% macro fileIcon (ext) %}
     {#    @TODO: obsługa ext #}
     <img class="fileicon" src="/images/icons/small-n-flat/file-empty.png">
+{% endmacro %}
+
+{% macro path (path) %}
+    {% for item in pathToArray(path) %}
+        <a href="{{ path(app.request.attributes.get('_route'), {fileManagerPath:item.url}) }}"
+           class="btn btn-dark btn-sm">{{ item.name }}</a>
+    {% endfor %}
 {% endmacro %}

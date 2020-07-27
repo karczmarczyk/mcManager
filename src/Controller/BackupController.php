@@ -18,12 +18,16 @@ class BackupController extends AbstractController
      * @param CommandService $commandService
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction (FileManagerService $fileManagerService,CommandService $commandService)
+    public function indexAction (Request $request, FileManagerService $fileManagerService,CommandService $commandService)
     {
-        $path = $commandService->getBackupPath();
+        $path = $request->query->get('fileManagerPath');
+        if (is_null($path)) {
+            $path = $commandService->getBackupPath();
+        }
+
         $files = $fileManagerService->getFileList($path);
 
-        //print_r($files); exit;
+//        print_r($files); exit;
 
         return $this->render('backup/index.html.twig', [
             'path' => $path,

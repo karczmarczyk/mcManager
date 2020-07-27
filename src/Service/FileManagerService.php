@@ -25,7 +25,9 @@ class FileManagerService
     {
         $filesTmp = $this->sftp->nlist($path);
 
-        sort ($filesTmp);
+        if (!is_array($filesTmp)) {
+            return [];
+        }
 
         $files = [];
         foreach ($filesTmp as $fileName) {
@@ -39,6 +41,14 @@ class FileManagerService
 
             $files [] = $file;
         }
+
+        usort($files, function ($a, $b) {
+            if ($a->isDir()==$b->isDir()) {
+                return ($a->getFileName() > $b->getFileName()) ? +1 : -1;
+            } else {
+                return ($a->isDir()) ? -1 : +1;
+            }
+        });
 
         return $files;
     }
