@@ -36,12 +36,17 @@
     </div>
 </div>
 
+<div id="dialog-simple">
+    <pre id="dialog-simple-content"></pre>
+</div>
+
 <!-- Bootstrap core JavaScript -->
 <script src="/vendor/jquery/jquery.min.js"></script>
 <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="/vendor/jquery-ui-1.12.1/jquery-ui.js"></script>
 <script src="/vendor/Gauge-Meter-Plugin/GaugeMeter.js"></script>
 <script src="/js/preloader.js"></script>
+<script src="/js/dialog-link.js"></script>
 
 <!-- Menu Toggle Script -->
 <script>
@@ -49,6 +54,16 @@
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
+
+    $( function() {
+        $( "#dialog-simple" ).dialog({
+            'title':'',
+            'autoOpen':false,
+            'modal':true,
+            'width':'90%',
+            'height':$(window).height()*0.9
+        });
+    } );
 </script>
 
 {% block javascripts %}{% endblock %}

@@ -61,4 +61,20 @@ class FileManagerService
     {
         return $this->sftp->exec ("cat ".$filePath);
     }
+
+    /**
+     * @param String $path
+     * @return File
+     */
+    public function getFile (String $path) {
+        $pathT = explode(DIRECTORY_SEPARATOR, $path);
+        $fileName = $pathT[array_key_last($pathT)];
+        $file = new File(
+            $fileName,
+            $path,
+            $this->sftp->lstat($path)
+        );
+        return $file;
+    }
+
 }

@@ -25,6 +25,11 @@ class FileManagerController extends AbstractController
             return null;
         }
 
-        return new Response('<pre>'.$fileManagerService->getFileContent($filePath).'</pre>');
+        $file = $fileManagerService->getFile($filePath);
+        if ($file->getSize()>$this->getParameter('fileMaxSizeForPreview')) {
+            return new Response("Rozmiar pliku jest za duży. \nPodgląd jest niedostępny.");
+        }
+
+        return new Response($fileManagerService->getFileContent($filePath));
     }
 }
