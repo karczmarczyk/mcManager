@@ -17,7 +17,9 @@
                 <tr>
                     <td>
                         {% if (file.isFile()) %}
-                            <a href="{{ path('file-manager-preview', {fileManagerFilePath:file.fileAbsoluteName}) }}">
+                                <a class="link-dialog"
+                                   title="{{ file.fileAbsoluteName }}"
+                                   href="{{ path('file-manager-preview', {fileManagerFilePath:file.fileAbsoluteName}) }}">
                                 {{ _self.fileIcon (file.ext) }}
                             </a>
                         {% else %}
@@ -28,7 +30,9 @@
                     </td>
                     <td>
                         {% if (file.isFile()) %}
-                            <a href="{{ path('file-manager-preview', {fileManagerFilePath:file.fileAbsoluteName}) }}">
+                            <a class="link-dialog"
+                               title="{{ file.fileAbsoluteName }}"
+                               href="{{ path('file-manager-preview', {fileManagerFilePath:file.fileAbsoluteName}) }}">
                                 {{ file.fileName|e }}
                             </a>
                         {% else %}

@@ -6,6 +6,7 @@
 parameters:
     ssh.host: '192.168.10.102'
     ssh.port: 22
+    fileMaxSizeForPreview: 1000000 #Byte
 
 services:
     # default configuration for services in *this* file
