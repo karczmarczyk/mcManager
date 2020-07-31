@@ -190,14 +190,21 @@ img.switch_loader {
 div.main_server_info {
   margin-left: 30px;
 
-  div.power_on {
+  span.power_on {
     color: white;
     background: #28a745;
     border-radius: 10px;
     padding: 0px 10px;
   }
 
-  div.power_off {
+  span.player-online {
+    color: white;
+    background: #2c94e0;
+    border-radius: 10px;
+    padding: 0px 10px;
+  }
+
+  span.power_off {
     color: white;
     background: darkred;
     border-radius: 10px;

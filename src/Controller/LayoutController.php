@@ -30,8 +30,8 @@ class LayoutController extends AbstractController
     public function mainMenu (Request $request) {
         $current = $request->get('current');
         $menu = [
-            ['label'=>'Serwer', 'href'=>$this->router->generate('server'), 'isActive'=>$current=='server'],
-            ['label'=>'Konsola', 'href'=>$this->router->generate('console'), 'isActive'=>$current=='console' || $current=='app_main'],
+            ['label'=>'Serwer', 'href'=>$this->router->generate('server'), 'isActive'=>$current=='server' || $current=='app_main'],
+            ['label'=>'Konsola', 'href'=>$this->router->generate('console'), 'isActive'=>$current=='console'],
             ['label'=>'Panel sterowania', 'href'=>$this->router->generate('control_panel'), 'isActive'=>$current=='control_panel'],
             ['label'=>'Backup', 'href'=>$this->router->generate('backup_index'), 'isActive'=>$current=='backup_index'],
         ];
@@ -43,14 +43,15 @@ class LayoutController extends AbstractController
 
     /**
      * @Route("/app_main_server_info", name="app_main_server_info")
+     * @param MinecraftServerService $minecraftServerService
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function mainServerInfo (MinecraftServerService $minecraftServerService, CommandService $commandService, SshService $sshService)
+    public function mainServerInfo (MinecraftServerService $minecraftServerService)
     {
         $isRunning = $minecraftServerService->isRunning();
         $listLoggedIn = "";
         if ($isRunning) {
-//            $listLoggedInCmd = $commandService->getConsoleCommand("list");
-//            $listLoggedIn = $sshService->getSsh()->exec($listLoggedInCmd);
+            $listLoggedIn = $minecraftServerService->getPlayersOnline();
         }
 
         return $this->render('layout/main_server_info.html.twig', [

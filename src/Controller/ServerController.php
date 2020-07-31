@@ -11,6 +11,7 @@ class ServerController extends AbstractController
 {
 
     /**
+     * @Route("/", name="app_main")
      * @Route("/server", name="server")
      * @param SystemStatService $systemStatService
      * @return \Symfony\Component\HttpFoundation\Response

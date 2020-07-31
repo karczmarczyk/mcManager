@@ -1,7 +1,8 @@
 {% if(isRunning) %}
-    <div class="power_on">Server is running</div>
+    <span class="power_on">Server is running</span>
+    <span class="player-online mobile-hide">
+        {{ listLoggedIn }}
+    </span>
 {% else %}
-    <div class="power_off">Server is OFF</div>
+    <span class="power_off">Server is OFF</span>
 {% endif %}
-
-{{ listLoggedIn }}

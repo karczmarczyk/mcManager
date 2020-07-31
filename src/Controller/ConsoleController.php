@@ -16,7 +16,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class ConsoleController extends AbstractController
 {
     /**
-     * @Route("/", name="app_main")
      * @Route("/console", name="console")
      */
     public function indexAction(AvailableCommandService $availableCommandService)
