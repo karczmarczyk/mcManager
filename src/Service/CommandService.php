@@ -127,4 +127,14 @@ class CommandService
     {
         return $this->configValues['getMcServerBackup'];
     }
+
+    public function getMcPlayers ()
+    {
+        return $this->configValues['getMcPlayers'];
+    }
+
+    public function getMcPlayersResult ()
+    {
+        return $this->configValues['getMcPlayersResult'];
+    }
 }

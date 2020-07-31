@@ -58,4 +58,13 @@ class MinecraftServerService
     {
         $this->conn->getSsh()->exec($this->commandService->getMcServerBackup());
     }
+
+    public function getPlayersOnline ()
+    {
+        $listLoggedInCmd = $this->commandService->getConsoleCommand($this->commandService->getMcPlayers());
+        $this->conn->getSsh()->exec($listLoggedInCmd);
+        $result = $this->conn->getSsh()->exec($this->commandService->getMcPlayersResult());
+        $r = preg_replace('/\[.*\]\:\s/', '', $result);
+        return $r;
+    }
 }
