@@ -199,11 +199,14 @@ div.main_server_info span.power_off {
   padding: 0px 10px;
 }
 
-#dialog-simple div.dialog-simple-menu {
-  position: fixed;
+#dialog-simple {
+  overflow: hidden;
 }
 #dialog-simple #dialog-simple-content {
-  margin-top: 50px;
+  margin-top: 10px;
+  overflow-y: scroll;
+  height: 90%;
+  font-size: 12px;
 }
 
 div.guest-content div.login-card {
