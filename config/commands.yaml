@@ -5,7 +5,9 @@ getBackupPath: '/home/minecraft/server_backup'
 # Nazwa SCREENa
 getScreenName: 'minecraft'
 # Pobieranie ostatniego logu
-getCurrentLog: 'cat %serverPath%/logs/latest.log'
+getCurrentLog: 'cat %logsPath%/latest.log'
+# Katalog z logami
+getLogsPath: '%serverPath%/logs'
 # Szablon dla konsolowej komendy
 getConsoleCommand: 'screen -S %screen% -p 0 -X stuff "%command%\r"'
 # CPU usage

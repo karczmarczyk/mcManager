@@ -66,6 +66,13 @@ class CommandService
     public function getCurrentLog ():String
     {
         return $this->bind($this->configValues['getCurrentLog'],[
+            'logsPath' => $this->getLogsPath()
+        ]);
+    }
+
+    public function getLogsPath ():String
+    {
+        return $this->bind($this->configValues['getLogsPath'],[
             'serverPath' => $this->getServerPath()
         ]);
     }

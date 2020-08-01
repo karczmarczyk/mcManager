@@ -30,10 +30,11 @@ class LayoutController extends AbstractController
     public function mainMenu (Request $request) {
         $current = $request->get('current');
         $menu = [
-            ['label'=>'Serwer', 'href'=>$this->router->generate('server'), 'isActive'=>$current=='server' || $current=='app_main'],
-            ['label'=>'Konsola', 'href'=>$this->router->generate('console'), 'isActive'=>$current=='console'],
-            ['label'=>'Panel sterowania', 'href'=>$this->router->generate('control_panel'), 'isActive'=>$current=='control_panel'],
-            ['label'=>'Backup', 'href'=>$this->router->generate('backup_index'), 'isActive'=>$current=='backup_index'],
+            ['label'=>'Server', 'href'=>$this->router->generate('server'), 'isActive'=>$current=='server' || $current=='app_main'],
+            ['label'=>'Console', 'href'=>$this->router->generate('console'), 'isActive'=>$current=='console'],
+            ['label'=>'Control Panel', 'href'=>$this->router->generate('control_panel'), 'isActive'=>$current=='control_panel'],
+            ['label'=>'Logs', 'href'=>$this->router->generate('logs_index'), 'isActive'=>$current=='logs_index'],
+            ['label'=>'Backups', 'href'=>$this->router->generate('backup_index'), 'isActive'=>$current=='backup_index'],
         ];
 
         return $this->render('layout/main_menu.html.twig', [
