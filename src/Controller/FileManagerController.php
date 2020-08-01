@@ -30,6 +30,12 @@ class FileManagerController extends AbstractController
             return new Response("Rozmiar pliku jest za duży. \nPodgląd jest niedostępny.");
         }
 
-        return new Response($fileManagerService->getFileContent($filePath));
+        $content = $fileManagerService->getFileContent($filePath);
+
+        if ($file->isArchive()) {
+            $content = gzdecode($content);
+        }
+
+        return new Response($content);
     }
 }

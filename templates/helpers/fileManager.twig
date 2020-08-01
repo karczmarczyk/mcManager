@@ -20,7 +20,7 @@
                                 <a class="link-dialog"
                                    title="{{ file.fileAbsoluteName }}"
                                    href="{{ path('file-manager-preview', {fileManagerFilePath:file.fileAbsoluteName}) }}">
-                                {{ _self.fileIcon (file.ext) }}
+                                {{ _self.fileIcon (file) }}
                             </a>
                         {% else %}
                             <a href="{{ path(app.request.attributes.get('_route'), {fileManagerPath:file.fileAbsoluteName}) }}">
@@ -54,9 +54,12 @@
 
 {% endmacro %}
 
-{% macro fileIcon (ext) %}
-    {#    @TODO: obsługa ext #}
-    <img class="fileicon" src="/images/icons/small-n-flat/file-empty.png">
+{% macro fileIcon (file) %}
+    {% if file.isArchive %}
+        <img class="fileicon" src="/images/icons/small-n-flat/file-zip.png">
+    {% else %}
+        <img class="fileicon" src="/images/icons/small-n-flat/file-empty.png">
+    {% endif %}
 {% endmacro %}
 
 {% macro path (path) %}

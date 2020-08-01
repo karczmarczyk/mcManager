@@ -152,7 +152,7 @@ class File
     public function getExt ()
     {
         $fileName = $this->getFileName();
-        $fileNameT = explode($fileName, '.');
+        $fileNameT = explode(".", $fileName);
         if (is_array($fileNameT)) {
             return $fileNameT[count($fileNameT)-1];
         }
@@ -176,4 +176,12 @@ class File
     {
         return $this->fileStat['type']==1;
     }
+
+    public function isArchive ()
+    {
+        return in_array($this->getExt(), [
+            'gz'
+        ]);
+    }
+
 }
