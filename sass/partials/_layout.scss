@@ -211,3 +211,12 @@ div.main_server_info {
     padding: 0px 10px;
   }
 }
+
+#dialog-simple {
+  div.dialog-simple-menu {
+    position: fixed;
+  }
+  #dialog-simple-content {
+    margin-top: 50px;
+  }
+}

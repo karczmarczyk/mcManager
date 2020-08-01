@@ -199,6 +199,13 @@ div.main_server_info span.power_off {
   padding: 0px 10px;
 }
 
+#dialog-simple div.dialog-simple-menu {
+  position: fixed;
+}
+#dialog-simple #dialog-simple-content {
+  margin-top: 50px;
+}
+
 div.guest-content div.login-card {
   width: 50vw;
   top: 25%;
