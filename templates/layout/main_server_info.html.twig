@@ -1,8 +1,12 @@
 {% if(isRunning) %}
-    <span class="power_on">Server is running</span>
+    <a href="{{ path('control_panel') }}">
+        <span class="power_on">Server is running</span>
+    </a>
     <span class="player-online mobile-hide">
         {{ listLoggedIn }}
     </span>
 {% else %}
-    <span class="power_off">Server is OFF</span>
+    <a href="{{ path('control_panel') }}">
+        <span class="power_off">Server is OFF</span>
+    </a>
 {% endif %}
