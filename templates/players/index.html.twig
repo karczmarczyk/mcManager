@@ -1,0 +1,31 @@
+{% extends 'index.html.twig' %}
+
+{% block title %}Players{% endblock %}
+
+{% block main_content %}
+
+    <h1>Players</h1>
+
+    <table class="table table-responsive-sm">
+        <thead>
+            <tr>
+                <th>Player</th>
+                <th style="width: 10%">Operations</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for playerUuid, playerName in players %}
+                <tr>
+                    <td>{{ playerName }}</td>
+                    <td><a class="btn btn-primary btn-sm link-dialog"
+                           title="{{ playerName }} - {{ playerUuid }}"
+                           data-dialog-content-as-html="1"
+                           href="{{ path('player_stats',{'uuid':playerUuid}) }}">
+                            stats
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
