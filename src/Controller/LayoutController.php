@@ -33,6 +33,7 @@ class LayoutController extends AbstractController
             ['label'=>'Server', 'href'=>$this->router->generate('server'), 'isActive'=>$current=='server' || $current=='app_main'],
             ['label'=>'Console', 'href'=>$this->router->generate('console'), 'isActive'=>$current=='console'],
             ['label'=>'Control Panel', 'href'=>$this->router->generate('control_panel'), 'isActive'=>$current=='control_panel'],
+            ['label'=>'Players', 'href'=>$this->router->generate('players'), 'isActive'=>$current=='players'],
             ['label'=>'Logs', 'href'=>$this->router->generate('logs_index'), 'isActive'=>$current=='logs_index'],
             ['label'=>'Backups', 'href'=>$this->router->generate('backup_index'), 'isActive'=>$current=='backup_index'],
         ];

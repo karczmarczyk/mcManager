@@ -5,6 +5,7 @@ namespace App\Service;
 
 
 use App\Service\Dto\File;
+use phpDocumentor\Reflection\Types\Boolean;
 
 class FileManagerService
 {
@@ -19,9 +20,10 @@ class FileManagerService
      * Zwraca listę plików w katalogu (path)
      *
      * @param String $path
+     * @param bool $skipReturn
      * @return array <App\Service\Dto\File>
      */
-    public function getFileList (String $path): array
+    public function getFileList (String $path, $skipReturn = false): array
     {
         $filesTmp = $this->sftp->nlist($path);
 
@@ -32,6 +34,7 @@ class FileManagerService
         $files = [];
         foreach ($filesTmp as $fileName) {
             if ($fileName=='.') continue;
+            if ($skipReturn && $fileName=='..') continue;
 
             $file = new File(
                 $fileName,

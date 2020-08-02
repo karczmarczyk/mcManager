@@ -1,6 +1,13 @@
 let dialogContent = "";
 
-function openDialogWithDynamicContent(id, link, title){
+function openDialogWithDynamicContent(id, elem) {
+    let link = elem.attr('href');
+    let title = elem.attr('title');
+    if(title == ''){
+        title = elem.attr('data-original-title');
+    }
+    let html = elem.attr('data-dialog-content-as-html');
+
     dialogContent = "";
     $('#file-manager-file-content-grep').val("");
     $.ajax({
@@ -9,7 +16,13 @@ function openDialogWithDynamicContent(id, link, title){
         async: true,
         success: function(msg) {
             dialogContent = msg;
-            $('#'+id+'-content').text(msg);
+            if (html==1) {
+                $('#file-manager-file-content-grep').hide();
+                $('#' + id + '-content').html(msg);
+            } else {
+                $('#file-manager-file-content-grep').show();
+                $('#' + id + '-content').text(msg);
+            }
             $('#'+id).dialog('open');
             $('#'+id).dialog( "option", "title", title );
         },
@@ -24,12 +37,7 @@ $(document).ready(function(){
 
     /* uruchamia dialog */
     $(document).on("click", "a.link-dialog" , function() {
-        var link = $(this).attr('href');
-        var title = $(this).attr('title');
-        if(title == ''){
-            title = $(this).attr('data-original-title');
-        }
-        openDialogWithDynamicContent('dialog-simple',link, title);
+        openDialogWithDynamicContent('dialog-simple',$(this));
         return false;
     });
 

@@ -1,0 +1,19 @@
+{% for categoryName, category in stats.stats %}
+    <h2>{{ categoryName }}</h2>
+    <table class="table table-responsive-sm">
+{#        <thead>#}
+{#            <tr>#}
+{#                <th>Param</th>#}
+{#                <th>Value</th>#}
+{#            </tr>#}
+{#        </thead>#}
+        <tbody>
+            {% for paramName, paramValue in category %}
+                <tr>
+                    <td style="width: 80%">{{ paramName }}</td>
+                    <td style="text-align: left">{{ paramValue }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endfor %}

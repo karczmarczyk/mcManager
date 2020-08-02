@@ -69,6 +69,10 @@ a.list-group-item-active {
   #preloader .label {
     width: 80% !important;
   }
+
+  table {
+    font-size: 12px;
+  }
 }
 #preloader,
 .dialog-preloader {
