@@ -78,7 +78,7 @@ class CommandFilterTool
     public static function highlightListOfPlayers ($string)
     {
         $string = preg_replace('/(There are \d{1,4} of a max of \d{1,4} players online: .*)/',
-            ': <span class="list">${1}</span>',
+            '<span class="list">${1}</span>',
             $string);
 
         return $string;
