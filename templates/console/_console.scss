@@ -20,6 +20,30 @@ div.console-container {
 
    pre {
      font-size: 12px;
+
+     span.time-content {
+       font-size: 9px;
+       color: #888;
+       span.time {
+         color: goldenrod;
+       }
+     }
+
+     span.second-content {
+       font-size: 9px;
+       color: #888;
+       span.second {
+         color: indigo;
+       }
+     }
+
+     span.player-content {
+       font-weight: bold;
+
+       span.player {
+         color: #2c94e0;
+       }
+     }
    }
  }
 }

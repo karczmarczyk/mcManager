@@ -233,6 +233,26 @@ div.console-container div.log div.console-control * {
 div.console-container div.log pre {
   font-size: 12px;
 }
+div.console-container div.log pre span.time-content {
+  font-size: 9px;
+  color: #888;
+}
+div.console-container div.log pre span.time-content span.time {
+  color: goldenrod;
+}
+div.console-container div.log pre span.second-content {
+  font-size: 9px;
+  color: #888;
+}
+div.console-container div.log pre span.second-content span.second {
+  color: indigo;
+}
+div.console-container div.log pre span.player-content {
+  font-weight: bold;
+}
+div.console-container div.log pre span.player-content span.player {
+  color: #2c94e0;
+}
 
 span.ui-autocomplete-label {
   color: #28a745;
