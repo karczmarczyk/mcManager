@@ -62,6 +62,7 @@
         });
 
         function load () {
+            let shouldScroll = isConsoleOnBottom ('#console');
             $.get( loadConsoleUrl, function( data ) {
                 if (data.data) {
                     $("#console").html(data.data);
@@ -69,7 +70,9 @@
                 } else {
                     document.location.reload();
                 }
-                consoleGoToBottom ('#console');
+                if (shouldScroll) {
+                    consoleGoToBottom('#console');
+                }
             });
         }
 
@@ -92,6 +95,15 @@
                     alert("Nieoczekiwany błąd");
                     blockForm = false;
                 });
+        }
+
+        function isConsoleOnBottom (selector) {
+            let messageBody = document.querySelector(selector);
+            let scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
+            if (messageBody.scrollTop==0) {
+                return true;
+            }
+            return scrollTop-messageBody.scrollTop==0;
         }
 
         function consoleGoToBottom (selector) {
