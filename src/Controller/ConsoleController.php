@@ -41,6 +41,7 @@ class ConsoleController extends AbstractController
         $log = CommandFilterTool::highlightAuthMe($log);
         $log = CommandFilterTool::highlightLostConnection($log);
         $log = CommandFilterTool::highlightListOfPlayers($log);
+        $log = CommandFilterTool::higlightServerCommand($log);
         return $this->json(['data' => $log]);
     }
 

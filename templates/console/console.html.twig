@@ -10,16 +10,22 @@
             <pre id="console">{{ preloader.preloaderInline() }}</pre>
             <div class="console-control">
                 <img id="input_loader" src="/images/input-loader.gif">
+                <label class="btn" id="comment_switch">
+                    <i class="fa fa-commenting" aria-hidden="true"></i>
+                    <input style="display: none" type="checkbox">
+                </label>
                 <input
                         class="form-control"
                         placeholder="wpisz komendę.."
                         name="command[command]"
                         required="required"
                         id="command" />
-                <button
+                <label>
+                    <button
                         class="btn btn-primary"
                         title="send.."
                         id="send_command"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                </label>
             </div>
 
         </div>
@@ -40,6 +46,7 @@
                 if (blockForm) return;
                 load();
             }, 3000);
+            commandInputMode();
         });
 
         $('#command').autocomplete({
@@ -57,9 +64,40 @@
             }
         });
 
+        $('#command').focusin(function () {
+            if (!isDialogMode()) return;
+            if($(this).val()=='') {
+                $(this).val('say ');
+            }
+        });
+        $('#command').focusout(function () {
+            if (!isDialogMode()) return;
+            if($(this).val()=='say ') {
+                $(this).val('');
+            }
+        });
+
         $('#send_command').click(function () {
             send ();
         });
+
+        $('#comment_switch').click(function () {
+            commandInputMode();
+        });
+
+        function commandInputMode () {
+            if (isDialogMode()) {
+                $('#command').prop('placeholder', 'powiedz coś do innych..');
+                $('#comment_switch').addClass('btn-success');
+            } else {
+                $('#command').prop('placeholder', 'wpisz komendę..');
+                $('#comment_switch').removeClass('btn-success');
+            }
+        }
+
+        function isDialogMode () {
+            return $('#comment_switch input[type="checkbox"]').is(':checked');
+        }
 
         function load () {
             let shouldScroll = isConsoleOnBottom ('#console');
@@ -88,6 +126,9 @@
                 .done(function(){
                     load();
                     $('#command').val("");
+                    if (isDialogMode()) {
+                        $('#command').val('say ');
+                    }
                     blockForm = false;
                 })
                 .fail(function(response){

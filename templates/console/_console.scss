@@ -9,6 +9,10 @@ div.console-container {
    div.console-control {
      display: flex;
 
+     label {
+
+     }
+
      button {
 
      }
@@ -54,6 +58,11 @@ div.console-container {
 
      span.list {
        color: #999;
+     }
+
+     span.server {
+       color: deepskyblue;
+       font-weight: bold;
      }
 
      @media (max-width: 768px) {
