@@ -262,6 +262,10 @@ div.console-container div.log pre span.authme-logout {
 div.console-container div.log pre span.list {
   color: #999;
 }
+div.console-container div.log pre span.server {
+  color: deepskyblue;
+  font-weight: bold;
+}
 @media (max-width: 768px) {
   div.console-container div.log pre {
     font-size: 10px;

@@ -45,12 +45,16 @@ class CommandFilterTool
     public static function highlightSecondParam ($string)
     {
         $string = preg_replace('/\s\[(.*)\]:/',
-            ' <span class="second-content mobile-hide">[<span class="second" title="${1}">${1}</span>]</span>:',
+            '<span class="second-content mobile-hide">[<span class="second" title="${1}">${1}</span>]</span>:',
             $string);
 
         return $string;
     }
 
+    /**
+     * @param $string
+     * @return string|string[]|null
+     */
     public static function highlightAuthMe ($string)
     {
         $string = preg_replace('/(\[AuthMe\] .* logged in .*)/',
@@ -63,6 +67,10 @@ class CommandFilterTool
         return $string;
     }
 
+    /**
+     * @param $string
+     * @return string|string[]|null
+     */
     public static function highlightLostConnection ($string)
     {
         $string = preg_replace('/: (.* lost connection: Disconnected)/',
@@ -75,10 +83,23 @@ class CommandFilterTool
         return $string;
     }
 
+    /**
+     * @param $string
+     * @return string|string[]|null
+     */
     public static function highlightListOfPlayers ($string)
     {
         $string = preg_replace('/(There are \d{1,4} of a max of \d{1,4} players online: .*)/',
             '<span class="list">${1}</span>',
+            $string);
+
+        return $string;
+    }
+
+    public static function higlightServerCommand ($string)
+    {
+        $string = preg_replace('/(\[Server\])/',
+            '<span class="server"><i class="fa fa-bullhorn" aria-hidden="true"></i> ${1}</span>',
             $string);
 
         return $string;
