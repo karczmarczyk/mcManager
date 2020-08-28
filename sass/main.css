@@ -253,6 +253,11 @@ div.console-container div.log pre span.player-content {
 div.console-container div.log pre span.player-content span.player {
   color: #2c94e0;
 }
+@media (max-width: 768px) {
+  div.console-container div.log pre {
+    font-size: 10px;
+  }
+}
 
 span.ui-autocomplete-label {
   color: #28a745;

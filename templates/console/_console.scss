@@ -44,6 +44,10 @@ div.console-container {
          color: #2c94e0;
        }
      }
+
+     @media (max-width: 768px) {
+       font-size: 10px;
+     }
    }
  }
 }
