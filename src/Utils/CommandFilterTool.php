@@ -45,7 +45,7 @@ class CommandFilterTool
     public static function highlightSecondParam ($string)
     {
         $string = preg_replace('/\s\[(.*)\]:/',
-            ' <span class="second-content">[<span class="second" title="${1}">${1}</span>]</span>:',
+            ' <span class="second-content mobile-hide">[<span class="second" title="${1}">${1}</span>]</span>:',
             $string);
         return $string;
     }
