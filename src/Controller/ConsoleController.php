@@ -8,6 +8,7 @@ use App\Form\Type\CommandType;
 use App\Service\AvailableCommandService;
 use App\Service\CommandService;
 use App\Service\SshService;
+use App\Utils\CommandFilterTool;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -34,6 +35,9 @@ class ConsoleController extends AbstractController
     public function getCurrentLogAction (SshService $sshService, CommandService $commandService)
     {
         $log = $sshService->getSsh()->exec($commandService->getCurrentLog());
+        $log = CommandFilterTool::highlightPlayerInChat($log);
+        $log = CommandFilterTool::highlightTime($log);
+        $log = CommandFilterTool::highlightSecondParam($log);
         return $this->json(['data' => $log]);
     }
 
