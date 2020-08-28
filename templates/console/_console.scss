@@ -45,6 +45,17 @@ div.console-container {
        }
      }
 
+     span.authme-login {
+       color: #28a745;
+     }
+     span.authme-logout {
+       color: red;
+     }
+
+     span.list {
+       color: #999;
+     }
+
      @media (max-width: 768px) {
        font-size: 10px;
      }

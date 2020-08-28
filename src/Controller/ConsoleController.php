@@ -38,6 +38,9 @@ class ConsoleController extends AbstractController
         $log = CommandFilterTool::highlightPlayerInChat($log);
         $log = CommandFilterTool::highlightTime($log);
         $log = CommandFilterTool::highlightSecondParam($log);
+        $log = CommandFilterTool::highlightAuthMe($log);
+        $log = CommandFilterTool::highlightLostConnection($log);
+        $log = CommandFilterTool::highlightListOfPlayers($log);
         return $this->json(['data' => $log]);
     }
 

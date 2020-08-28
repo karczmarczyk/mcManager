@@ -253,6 +253,15 @@ div.console-container div.log pre span.player-content {
 div.console-container div.log pre span.player-content span.player {
   color: #2c94e0;
 }
+div.console-container div.log pre span.authme-login {
+  color: #28a745;
+}
+div.console-container div.log pre span.authme-logout {
+  color: red;
+}
+div.console-container div.log pre span.list {
+  color: #999;
+}
 @media (max-width: 768px) {
   div.console-container div.log pre {
     font-size: 10px;
