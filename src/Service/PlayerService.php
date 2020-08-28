@@ -4,6 +4,8 @@
 namespace App\Service;
 
 
+use App\Utils\FileTool;
+
 class PlayerService
 {
     /**
@@ -43,6 +45,10 @@ class PlayerService
         $files = $this->fileManager->getFileList($userPath, true);
         $players = [];
         foreach ($files as $file) {
+            // only dat file
+            if (!FileTool::hasExtension($file->getFileName(), 'dat')) {
+                continue;
+            }
             $players [$this->_fetchPlayerUuidFromFileName($file->getFileName())]
                 = $this->_fetchPlayerNameFromContent($this->fileManager->getFileContent($file->getFileAbsoluteName()));
         }
