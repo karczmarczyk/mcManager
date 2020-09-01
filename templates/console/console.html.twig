@@ -5,6 +5,41 @@
 
 {% block main_content %}
     <div class="console-container">
+        <form name="filter" id="filter_form">
+            <div class="filter-container row" id="form-container">
+                <div class="col-sm-3">
+                    <div class="form-check">
+                        <input type="radio" id="command_filter_all_0" name="command_filter[all]" required="required" class="form-check-input" value="1" checked="checked">
+                        <label class="form-check-label required" for="command_filter_all_0">Wszystkie</label>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="row">
+                        <div class="form-check">
+                            <input type="radio" id="command_filter_all_1" name="command_filter[all]" required="required" class="form-check-input" value="0">
+                            <label class="form-check-label required" for="command_filter_all_1">Wybrane</label>
+                        </div>
+                    </div>
+                    <div class="row filter-options-container">
+                        <div class="filter-options">
+                            <div class="form-check">
+                                <input disabled="disabled" type="checkbox" id="command_filter_asyncChatThread" name="command_filter[asyncChatThread]" class="form-check-input" value="1">
+                                <label class="form-check-label" for="command_filter_asyncChatThread">Async chat thread</label>
+                            </div>
+                        </div>
+                        <div class="filter-options">
+                            <div class="form-check">
+                                <input disabled="disabled" type="checkbox" id="command_filter_serverThread" name="command_filter[serverThread]" class="form-check-input" value="1">
+                                <label class="form-check-label" for="command_filter_serverThread">Server thread</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="filter-toggle" id="filter-toggle">
+                FILTER
+            </div>
+        </form>
         <div class="log">
 {#            <img id="command_loader" src="/images/command-loader.gif">#}
             <pre id="console">{{ preloader.preloaderInline() }}</pre>
@@ -41,6 +76,7 @@
         let blockForm = false;
 
         $(document).ready(function () {
+            $('#form-container').toggle();
             load();
             setInterval(function(){
                 if (blockForm) return;
@@ -85,6 +121,10 @@
             commandInputMode();
         });
 
+        $('#filter-toggle').click(function () {
+            $('#form-container').toggle();
+        })
+
         function commandInputMode () {
             if (isDialogMode()) {
                 $('#command').prop('placeholder', 'powiedz coś do innych..');
@@ -100,8 +140,13 @@
         }
 
         function load () {
+
+            let token = "{{ csrf_token('command_filter_token') }}";
+            let serializedData = $( '#filter_form' ).serialize();
+            serializedData+= '&command_filter[_token]=' + token;
+
             let shouldScroll = isConsoleOnBottom ('#console');
-            $.get( loadConsoleUrl, function( data ) {
+            $.get( loadConsoleUrl, serializedData, function( data ) {
                 if (data.data) {
                     $("#console").html(data.data);
                     $('#input_loader').hide();
@@ -151,6 +196,21 @@
             let messageBody = document.querySelector(selector);
             messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
         }
+
+        $('.filter-container input').change(function () {
+            lockUnlockCheckbox();
+
+        });
+
+        function lockUnlockCheckbox () {
+            if ($('#command_filter_all_1').is(':checked')) {
+                $('.filter-options input').removeAttr('disabled');
+            } else {
+                $('.filter-options input').attr("disabled", true);
+                $('.filter-options input').prop("checked", false);
+            }
+        }
+
     </script>
 {% endblock %}
 {% block stylesheets %}

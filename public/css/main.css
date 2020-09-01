@@ -218,6 +218,27 @@ div.guest-content div.login-card {
   top: 25%;
   left: 25%;
 }
+div.console-container div.filter-toggle {
+  position: absolute;
+  background: #F8F9FA;
+  border-bottom: 1px solid #dee2e6;
+  padding: 10px;
+  border-radius: 0 0 15px 15px;
+  margin-top: -1px;
+  right: 35px;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 12px;
+}
+div.console-container div.filter-container {
+  background: #F8F9FA;
+  border-bottom: 1px solid #dee2e6;
+  font-size: 12px;
+  padding-bottom: 5px;
+}
+div.console-container div.filter-container div.filter-options-container div.filter-options {
+  margin-right: 15px;
+}
 div.console-container div.log {
   height: 80vh;
   display: flex;

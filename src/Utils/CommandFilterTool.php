@@ -96,6 +96,10 @@ class CommandFilterTool
         return $string;
     }
 
+    /**
+     * @param $string
+     * @return string|string[]|null
+     */
     public static function higlightServerCommand ($string)
     {
         $string = preg_replace('/(\[Server\])/',
