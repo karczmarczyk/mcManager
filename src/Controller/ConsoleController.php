@@ -3,7 +3,9 @@
 
 namespace App\Controller;
 
+use App\Form\Model\CommandFilterForm;
 use App\Form\Model\CommandForm;
+use App\Form\Type\CommandFilterType;
 use App\Form\Type\CommandType;
 use App\Service\AvailableCommandService;
 use App\Service\CommandService;
@@ -21,8 +23,12 @@ class ConsoleController extends AbstractController
      */
     public function indexAction(AvailableCommandService $availableCommandService)
     {
+        $model = new CommandFilterForm();
+        $form = $this->createForm(CommandFilterType::class, $model);
+
         return $this->render('console/console.html.twig', [
-            'availableCommands' => $availableCommandService->getAllWithDescAsJson()
+            'availableCommands' => $availableCommandService->getAllWithDescAsJson(),
+            'form' => $form->createView()
         ]);
     }
 
@@ -30,11 +36,19 @@ class ConsoleController extends AbstractController
      * @Route("/console/current-log", name="current_log")
      * @param SshService $sshService
      * @param CommandService $commandService
+     * @param Request $request
      * @return Response
+     * @throws \Exception
      */
-    public function getCurrentLogAction (SshService $sshService, CommandService $commandService)
+    public function getCurrentLogAction (SshService $sshService, CommandService $commandService, Request $request)
     {
+        $model = new CommandFilterForm();
+        $form = $this->createForm(CommandFilterType::class, $model);
+        $form->handleRequest($request);
+
         $log = $sshService->getSsh()->exec($commandService->getCurrentLog());
+
+        //highlights
         $log = CommandFilterTool::highlightPlayerInChat($log);
         $log = CommandFilterTool::highlightTime($log);
         $log = CommandFilterTool::highlightSecondParam($log);
@@ -42,6 +56,21 @@ class ConsoleController extends AbstractController
         $log = CommandFilterTool::highlightLostConnection($log);
         $log = CommandFilterTool::highlightListOfPlayers($log);
         $log = CommandFilterTool::higlightServerCommand($log);
+
+        //filters
+        if ($form->isSubmitted() && $form->isValid()) {
+            $model = $form->getData();
+            if ($model->getAll()==0) {
+                if ($model->getAsyncChatThread()) {
+
+                }
+                if ($model->getServerThread()) {
+
+                }
+            }
+        }
+
+
         return $this->json(['data' => $log]);
     }
 
