@@ -213,6 +213,14 @@ div.main_server_info span.power_off {
   font-size: 12px;
 }
 
+.circle-green {
+  color: limegreen;
+}
+
+.circle-red {
+  color: red;
+}
+
 html.dark-mode {
   filter: invert(88%);
 }

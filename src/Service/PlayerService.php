@@ -4,6 +4,7 @@
 namespace App\Service;
 
 
+use App\Service\Dto\Player;
 use App\Utils\FileTool;
 
 class PlayerService
@@ -20,18 +21,25 @@ class PlayerService
      * @var CommandService
      */
     private $command;
+    /**
+     * @var MinecraftServerService
+     */
+    private $minecraftServerService;
 
     /**
      * PlayerService constructor.
      * @param SshService $conn
      * @param FileManagerService $fileManagerService
      * @param CommandService $commandService
+     * @param MinecraftServerService $minecraftServerService
      */
-    public function __construct(SshService $conn, FileManagerService $fileManagerService, CommandService $commandService)
+    public function __construct(SshService $conn, FileManagerService $fileManagerService,
+                                CommandService $commandService, MinecraftServerService $minecraftServerService)
     {
         $this->conn = $conn;
         $this->fileManager = $fileManagerService;
         $this->command = $commandService;
+        $this->minecraftServerService = $minecraftServerService;
     }
 
     /**
@@ -44,13 +52,19 @@ class PlayerService
             .DIRECTORY_SEPARATOR."world".DIRECTORY_SEPARATOR."playerdata".DIRECTORY_SEPARATOR;
         $files = $this->fileManager->getFileList($userPath, true);
         $players = [];
+        $activePlayers = $this->minecraftServerService->getPlayersOnlineList();
         foreach ($files as $file) {
             // only dat file
             if (!FileTool::hasExtension($file->getFileName(), 'dat')) {
                 continue;
             }
-            $players [$this->_fetchPlayerUuidFromFileName($file->getFileName())]
-                = $this->_fetchPlayerNameFromContent($this->fileManager->getFileContent($file->getFileAbsoluteName()));
+            $player = new Player();
+            $player->setUuid($this->_fetchPlayerUuidFromFileName($file->getFileName()));
+            $player->setName($this->_fetchPlayerNameFromContent($this->fileManager->getFileContent($file->getFileAbsoluteName())));
+            $player->setLastActivityH($file->getModifyTimeH());
+            $player->setLastActivity($file->getModifyTime());
+            $player->setPlayNow(in_array($player->getName(), $activePlayers));
+            $players [] = $player;
         }
         return $players;
     }
