@@ -67,4 +67,13 @@ class MinecraftServerService
         $r = preg_replace('/\[.*\]\:\s/', '', $result);
         return $r;
     }
+
+    public function getPlayersOnlineList ()
+    {
+        $str = $this->getPlayersOnline();
+        $r = preg_match('/: (.*)/', $str, $matches);
+        if (!isset($matches[1])) return [];
+        $players = explode(", ",$matches[1]);
+        return $players;
+    }
 }

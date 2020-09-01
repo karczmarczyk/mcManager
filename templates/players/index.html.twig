@@ -10,17 +10,21 @@
         <thead>
             <tr>
                 <th>Player</th>
+                <th style="width: 20%">Last activity <i class="fa fa-sort-desc" aria-hidden="true"></i></th>
                 <th style="width: 10%">Operations</th>
             </tr>
         </thead>
         <tbody>
-            {% for playerUuid, playerName in players %}
+            {% for player in players %}
                 <tr>
-                    <td>{{ playerName }}</td>
+                    <td>
+                        <i class="fa fa-circle {% if player.playNow %}circle-green{% else %}circle-red{% endif %} " aria-hidden="true"></i>
+                        {{ player.name }}</td>
+                    <td>{{ player.lastActivityH }}</td>
                     <td><a class="btn btn-primary btn-sm link-dialog"
-                           title="{{ playerName }} - {{ playerUuid }}"
+                           title="{{ player.name }} - {{ player.uuid }}"
                            data-dialog-content-as-html="1"
-                           href="{{ path('player_stats',{'uuid':playerUuid}) }}">
+                           href="{{ path('player_stats',{'uuid':player.uuid}) }}">
                             stats
                         </a>
                     </td>

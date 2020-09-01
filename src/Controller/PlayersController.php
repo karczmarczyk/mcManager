@@ -18,6 +18,8 @@ class PlayersController extends AbstractController
     public function indexAction (PlayerService $playerService)
     {
         $players = $playerService->getPlayers();
+        // sortowanie po aktywności
+        usort($players, function($a, $b) {return strcmp($b->getLastActivity(), $a->getLastActivity());});
         return $this->render('players/index.html.twig', [
             'players' => $players
         ]);
