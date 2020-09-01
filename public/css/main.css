@@ -213,6 +213,21 @@ div.main_server_info span.power_off {
   font-size: 12px;
 }
 
+html.dark-mode {
+  filter: invert(88%);
+}
+html.dark-mode img {
+  filter: invert(100%) brightness(1.1) contrast(1.2);
+}
+html.dark-mode div#preloader,
+html.dark-mode div.dialog-preloader {
+  background: white;
+}
+html.dark-mode div.guest-content {
+  filter: invert(100%) brightness(1.1) contrast(1.2);
+  background-image: url("/images/netherrack.png");
+}
+
 div.guest-content div.login-card {
   width: 50vw;
   top: 25%;
