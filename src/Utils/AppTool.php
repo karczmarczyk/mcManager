@@ -21,9 +21,10 @@ class AppTool
         }
     }
 
-    public static function StringToNumeric ($string)
+    public static function StringToNumeric ($number)
     {
-        $number = str_replace(',','.', $string);
+        $number = str_replace(',','.', $number);
+        $number = str_replace(' ','', $number);
         return $number;
     }
 }
