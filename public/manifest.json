@@ -1,6 +1,7 @@
 {
   "short_name": "mcManager",
-  "name": "",
+  "name": "Minecraft Server Manager",
+  "description": "Managing mc server, players, backups.",
   "icons": [
     {
       "src": "/images/logo-full.png",
