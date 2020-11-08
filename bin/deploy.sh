@@ -6,10 +6,10 @@ REMOTE_PATH="/var/www/minecraft/mcManager"
 BRANCH="master"
 
 echo "\n------------------------------"
-echo "\nConfiguration:"
-echo "\nLOCAL_PATH=$LOCAL_PATH"
-echo "\nREMOTE_PATH=$REMOTE_PATH"
-echo "\nBRANCH=$BRANCH"
+echo "Configuration:"
+echo "LOCAL_PATH=$LOCAL_PATH"
+echo "REMOTE_PATH=$REMOTE_PATH"
+echo "BRANCH=$BRANCH"
 echo "\n------------------------------"
 
 
