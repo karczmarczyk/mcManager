@@ -10,7 +10,7 @@ echo "Configuration:"
 echo "LOCAL_PATH=$LOCAL_PATH"
 echo "REMOTE_PATH=$REMOTE_PATH"
 echo "BRANCH=$BRANCH"
-echo "\n------------------------------"
+echo "------------------------------"
 
 
 echo "\n\nsend to repo to branch $BRANCH\n";
