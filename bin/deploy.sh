@@ -5,7 +5,15 @@ LOCAL_PATH="/home/mateusz/www/symfony4/mcManager"
 REMOTE_PATH="/var/www/minecraft/mcManager"
 BRANCH="master"
 
-echo "\nsend to repo to branch $BRANCH\n";
+echo "\n------------------------------"
+echo "\nConfiguration:"
+echo "\nLOCAL_PATH=$LOCAL_PATH"
+echo "\nREMOTE_PATH=$REMOTE_PATH"
+echo "\nBRANCH=$BRANCH"
+echo "\n------------------------------"
+
+
+echo "\n\nsend to repo to branch $BRANCH\n";
 cd $LOCAL_PATH;
 git add .
 git commit -m "deploy $NOW"
