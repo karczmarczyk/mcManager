@@ -12,6 +12,8 @@ echo "REMOTE_PATH=$REMOTE_PATH"
 echo "BRANCH=$BRANCH"
 echo "------------------------------"
 
+echo "\ncontinuation in 5s.."
+sleep 5;
 
 echo "\n\nsend to repo to branch $BRANCH\n";
 cd $LOCAL_PATH;
