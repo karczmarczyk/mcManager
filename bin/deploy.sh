@@ -9,5 +9,11 @@ cd $LOCAL_PATH;
 git add .
 git commit -m "deploy $NOW"
 git push origin $BRANCH
-ssh mateusz@192.168.10.102 cd $REMOTE_PATH; git pull origin $BRANCH;  /usr/local/php/bin/php $REMOTE_PATH/bin/console cache:clear;
+
+#REMOTE
+ssh mateusz@192.168.10.102
+  cd $REMOTE_PATH;
+  git pull origin $BRANCH;
+  /usr/local/php/bin/php $REMOTE_PATH/bin/console cache:clear;
+
 echo "DONE!";
