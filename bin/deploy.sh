@@ -12,17 +12,17 @@ echo "REMOTE_PATH=$REMOTE_PATH"
 echo "BRANCH=$BRANCH"
 echo "------------------------------"
 
-echo "\ncontinuation in 5s.."
-sleep 5;
+echo "\n---continuation in 3s.."
+sleep 3;
 
-echo "\n\nsend to repo to branch $BRANCH\n";
+echo "\n\n---send to repo to branch $BRANCH\n";
 cd $LOCAL_PATH;
 git add .
 git commit -m "deploy $NOW"
 git push origin $BRANCH
 
 #REMOTE
-echo "\nGo to remote\n"
+echo "\n---go to remote\n"
 ssh mateusz@192.168.10.102 sh $REMOTE_PATH/bin/deployRemote.sh $REMOTE_PATH $BRANCH;
 
-echo "\nDONE!\n";
+echo "\n---DONE!\n";
