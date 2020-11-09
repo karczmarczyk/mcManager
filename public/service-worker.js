@@ -2,6 +2,7 @@ const CACHE_NAME = 'mcmcjaciekrece_20201103';
 
 // List of files which are store in cache.
 let CACHED_FILES = [
+    '/load',
     '/css/main.css',
     '/css/main-guest.css',
     '/images/logo-full.png'

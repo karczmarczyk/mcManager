@@ -1,0 +1,27 @@
+{% extends 'guest.html.twig' %}
+
+{% block guest %}
+    <div style="background:#15191F; position: absolute; top: -60px; left: 0px; height: 100%; width: 100%; z-index: 999999">
+        <div id="internet_problem" style="display: none;color: white; text-align: center; margin-top: 10% ">Problem Internetem..</div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+     Preloader.show();
+
+     let loadCheckUrl = "/load/check";
+
+     $.get( loadCheckUrl, [], function( data ) {
+
+         console.log(data);
+
+         if (data.status && data.status=="OK") {
+             document.location.href = "/";
+             return;
+         }
+
+         $('#internet_problem').hide();
+     });
+</script>
+{% endblock %}
