@@ -15,6 +15,7 @@ body div.guest-content a.darkmode-switch {
   right: 10px;
   top: 10px;
   font-size: 36px;
+  z-index: 99999;
 }
 
 html.dark-mode {

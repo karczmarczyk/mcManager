@@ -221,6 +221,38 @@ div.main_server_info span.power_off {
   color: red;
 }
 
+.blur {
+  /* Add the blur effect */
+  filter: blur(10px);
+  -webkit-filter: blur(10px);
+}
+
+div.install_block_container {
+  height: 60px;
+}
+div.install_block_container div.install_block_container_fixed {
+  background-image: url("/images/stone.png");
+  background-size: 150px;
+  padding: 5px;
+  text-align: center;
+  position: fixed;
+  height: 65px;
+  width: 100%;
+  z-index: 99999;
+  -webkit-box-shadow: 0px 8px 23px -10px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 8px 23px -10px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 8px 23px -10px rgba(0, 0, 0, 0.75);
+}
+div.install_block_container div.install_block_container_fixed button {
+  background-image: url("/images/brick.jpg");
+  background-size: 46px;
+  height: 55px;
+  width: 200px;
+  color: white;
+  text-shadow: 2px 2px black;
+  border: 5px solid black;
+}
+
 html.dark-mode {
   filter: invert(88%);
 }

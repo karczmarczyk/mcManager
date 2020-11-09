@@ -50,9 +50,15 @@
 
 <body>
 
-<button class="add-button">Add to home screen</button>
+<div class="install_block_container" id="install_block" style="display: none">
+    <div class="install_block_container_fixed">
+        <button id="install-button">Add to home screen</button>
+    </div>
+</div>
 
+<div id="block_body_container" class="">
 {% block body %}{% endblock %}
+</div>
 
 <div id="preloader">
     <div class="label">
@@ -97,8 +103,9 @@
         // install
 
         let deferredPrompt;
-        const addBtn = document.querySelector('.add-button');
-        addBtn.style.display = 'none';
+        const addBtn = document.querySelector('#install-button');
+        const addBtnCnt = document.querySelector('#install_block');
+        addBtnCnt.style.display = 'none';
 
         window.addEventListener('beforeinstallprompt', (e) => {
             // Prevent Chrome 67 and earlier from automatically showing the prompt
@@ -106,11 +113,11 @@
             // Stash the event so it can be triggered later.
             deferredPrompt = e;
             // Update UI to notify the user they can add to home screen
-            addBtn.style.display = 'block';
+            addBtnCnt.style.display = 'block';
 
             addBtn.addEventListener('click', (e) => {
                 // hide our user interface that shows our A2HS button
-                addBtn.style.display = 'none';
+                addBtnCnt.style.display = 'none';
                 // Show the prompt
                 deferredPrompt.prompt();
                 // Wait for the user to respond to the prompt

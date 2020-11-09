@@ -1,0 +1,7 @@
+#!/bin/bash
+
+basepath=$(pwd);
+inpath="$basepath/sass";
+#outpath="$basepath/public/assets/css";
+outpath="$basepath/public/css";
+sass --watch $inpath:$outpath "$basepath/templates";
