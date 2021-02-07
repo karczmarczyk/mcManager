@@ -15,7 +15,7 @@ class LoadController extends AbstractController
 {
 
     /**
-     * @Route("/processing.html", name="load-view")
+     * @Route("/", name="load-view")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function loadAction ()

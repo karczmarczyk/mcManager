@@ -1,8 +1,8 @@
-const CACHE_NAME = 'mcmcjaciekrece_20210207.2';
+const CACHE_NAME = 'mcmcjaciekrece_20210207.3';
 
 // List of files which are store in cache.
 let CACHED_FILES = [
-    '/load/processing.html',
+    '/load',
     '/css/main.css',
     '/css/main-guest.css',
     '/images/logo-full.png'
@@ -28,13 +28,14 @@ self.addEventListener('fetch', function (event) {
         //     // When request failed, return file from cache...
         //     return caches.match(event.request);
         // })
+        
         // Try the cache
         caches.match(event.request).then(function(response) {
             // Fall back to network
             return response || fetch(event.request);
         }).catch(function() {
             // If both fail, show a generic fallback:
-            return caches.match('/load/processing.html');
+            return caches.match('/load');
             // However, in reality you'd have many different
             // fallbacks, depending on URL & headers.
             // Eg, a fallback silhouette image for avatars.
