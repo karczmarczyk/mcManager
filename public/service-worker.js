@@ -1,4 +1,4 @@
-const CACHE_NAME = 'mcmcjaciekrece_20201103';
+const CACHE_NAME = 'mcmcjaciekrece_20210207';
 
 // List of files which are store in cache.
 let CACHED_FILES = [
@@ -11,7 +11,7 @@ let CACHED_FILES = [
 self.addEventListener('install', function (evt) {
     evt.waitUntil(
         caches.open(CACHE_NAME).then(function (cache) {
-            return cache.addAll(filesToCache);
+            return cache.addAll(CACHED_FILES);
         }).catch(function (err) {
             // Snooze errors...
             // console.error(err);
