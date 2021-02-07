@@ -28,7 +28,7 @@ self.addEventListener('fetch', function (event) {
         //     // When request failed, return file from cache...
         //     return caches.match(event.request);
         // })
-        
+
         // Try the cache
         caches.match(event.request).then(function(response) {
             // Fall back to network
