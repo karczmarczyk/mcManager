@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
+ * @Route("/load", name="load")
+ *
  * Class LoadController
  * @package App\Controller
  */
@@ -13,7 +15,7 @@ class LoadController extends AbstractController
 {
 
     /**
-     * @Route("/load", name="load-view")
+     * @Route("", name="-view")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function loadAction ()
@@ -23,7 +25,7 @@ class LoadController extends AbstractController
     }
 
     /**
-     * @Route("/load/check", name="load-check", methods={"GET"})
+     * @Route("/check", name="-check", methods={"GET"})
      */
     public function checkAction ()
     {
