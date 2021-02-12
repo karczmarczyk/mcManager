@@ -50,11 +50,13 @@
 
 <body>
 
+{% block install_block %}
 <div class="install_block_container" id="install_block" style="display: none">
     <div class="install_block_container_fixed">
         <button id="install-button">Add to home screen</button>
     </div>
 </div>
+{% endblock %}
 
 <div id="block_body_container" class="">
 {% block body %}{% endblock %}

@@ -8,6 +8,7 @@ var Preloader = null;
         },
         hide: function () {
             $('#preloader').hide();
+            $('#preloader').css({'display':'none'});
             $('#preloader-text').text('Wczytywanie danych. Proszę czekać');
         }
     }

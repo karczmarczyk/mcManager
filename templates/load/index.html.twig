@@ -1,8 +1,12 @@
-{% extends 'guest.html.twig' %}
+{% extends 'main.html.twig' %}
 
-{% block guest %}
-    <div style="background:#15191F; position: absolute; top: -60px; left: 0px; height: 100%; width: 100%; z-index: 999999">
-        <div id="internet_problem" style="display: none;color: white; text-align: center; margin-top: 10% ">Problem z Internetem..</div>
+{% block install_block %}
+{#    Nothing to show#}
+{% endblock %}
+
+{% block body %}
+    <div id="internet_problem" style="display: none; background:#15191F; position: absolute; left: 0px; height: 100%; width: 100%; z-index: 999999; scroll: none">
+        <div style="display: block; color: white; text-align: center; margin-top: 10% ">Problem z Internetem..</div>
     </div>
 {% endblock %}
 
@@ -21,7 +25,10 @@
              return;
          }
 
-         $('#internet_problem').hide();
+         setTimeout(function() {
+             Preloader.hide();
+             $('#internet_problem').show();
+         }, 1000);
      });
 </script>
 {% endblock %}
