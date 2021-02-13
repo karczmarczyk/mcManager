@@ -6,6 +6,7 @@ namespace App\Service;
 
 use phpseclib\Net\SSH2;
 use phpseclib\Net\SFTP;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class SshService
@@ -25,14 +26,26 @@ class SshService
     private $login;
     private $password;
 
-    public function __construct(TokenStorageInterface $tokenStorage, $sshHost, $sshPort)
+    public function __construct(TokenStorageInterface $tokenStorage, ParameterBagInterface $params, $sshHost, $sshPort)
     {
-        $user=$tokenStorage->getToken()->getUser();
+        if (!is_null($tokenStorage) && !is_null($tokenStorage->getToken())) {
+            $user = $tokenStorage->getToken()->getUser();
 
-        $this->login = $user->getUsername();
-        $this->password = $user->getPassword();
+            $this->login = $user->getUsername();
+            $this->password = $user->getPassword();
+        } else {
+            // @TODO
+            $this->login = $params->get('technicalUser');
+            $this->password = $params->get('technicalPass');
+        }
         $this->sshHost = $sshHost;
         $this->sshPort = $sshPort;
+    }
+
+    public function setCredentials ($login, $password)
+    {
+        $this->login = $login;
+        $this->password = $password;
     }
 
     public function getSsh(): SSH2

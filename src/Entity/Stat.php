@@ -25,7 +25,7 @@ class Stat
     private $datetime;
 
     /**
-     * @ORM\OneToMany(targetEntity=StatDetail::class, mappedBy="stat")
+     * @ORM\OneToMany(targetEntity=StatDetail::class, mappedBy="stat", cascade={"persist"})
      */
     private $statDetails;
 

@@ -25,6 +25,11 @@ class StatDetail
     /**
      * @ORM\Column(type="string", length=255)
      */
+    private $playerUuid;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     private $keyName;
 
     /**
@@ -33,7 +38,12 @@ class StatDetail
     private $keyValue;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Stat::class, inversedBy="statDetails")
+     * @ORM\Column(type="string", length=255)
+     */
+    private $keyCategory;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Stat::class, inversedBy="statDetails", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $stat;
@@ -90,4 +100,43 @@ class StatDetail
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getKeyCategory()
+    {
+        return $this->keyCategory;
+    }
+
+    /**
+     * @param mixed $keyCategory
+     */
+    public function setKeyCategory($keyCategory): void
+    {
+        $this->keyCategory = $keyCategory;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPlayerUuid()
+    {
+        return $this->playerUuid;
+    }
+
+    /**
+     * @param mixed $playerUuid
+     */
+    public function setPlayerUuid($playerUuid): void
+    {
+        $this->playerUuid = $playerUuid;
+    }
+
+    public function __toString()
+    {
+        return "";
+    }
+
+
 }
