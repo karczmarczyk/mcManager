@@ -11,9 +11,9 @@ body div.guest-content {
   height: 100vh;
 }
 body div.guest-content a.darkmode-switch {
-  position: absolute;
-  right: 10px;
-  top: 10px;
+  margin-right: 10px;
+  margin-top: 20px;
+  float: right;
   font-size: 36px;
 }
 
@@ -30,6 +30,12 @@ html.dark-mode div.dialog-preloader {
 html.dark-mode div.guest-content {
   filter: invert(100%) brightness(1.1) contrast(1.2);
   background-image: url("/images/netherrack.png");
+}
+html.dark-mode div.frontend #page-content-wrapper {
+  background-image: none;
+}
+html.dark-mode div.install_block_container div.install_block_container_fixed {
+  filter: invert(100%) brightness(1.1) contrast(1.2);
 }
 
 /*# sourceMappingURL=main-guest.css.map */

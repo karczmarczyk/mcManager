@@ -15,8 +15,10 @@ html.dark-mode {
     //background-image: none;
     filter: invert(100%) brightness(1.1) contrast(1.2);
     background-image: url("/images/netherrack.png");
+  }
 
-
+  div.frontend #page-content-wrapper {
+    background-image: none;
   }
 
   div.install_block_container {

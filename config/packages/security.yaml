@@ -33,5 +33,6 @@ security:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/load, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/load/check, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/rank/*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         # - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/, roles: ROLE_USER }

@@ -10,6 +10,7 @@ img.main-logo {
 div.preloader-inline {
   text-align: center;
 }
+
 div.preloader-inline img {
   height: 250px;
   border: 1px solid black;
@@ -110,6 +111,7 @@ a.list-group-item-active {
 .align-items-stretch {
   margin-bottom: 25px;
 }
+
 .align-items-stretch .card {
   height: 100%;
 }
@@ -184,18 +186,21 @@ img.switch_loader {
 div.main_server_info {
   margin-left: 30px;
 }
+
 div.main_server_info span.power_on {
   color: white;
   background: #28a745;
   border-radius: 10px;
   padding: 0px 10px;
 }
+
 div.main_server_info span.player-online {
   color: white;
   background: #2c94e0;
   border-radius: 10px;
   padding: 0px 10px;
 }
+
 div.main_server_info span.power_off {
   color: white;
   background: darkred;
@@ -206,6 +211,7 @@ div.main_server_info span.power_off {
 #dialog-simple {
   overflow: hidden;
 }
+
 #dialog-simple #dialog-simple-content {
   margin-top: 10px;
   overflow-y: scroll;
@@ -230,6 +236,7 @@ div.main_server_info span.power_off {
 div.install_block_container {
   height: 60px;
 }
+
 div.install_block_container div.install_block_container_fixed {
   background-image: url("/images/stone.png");
   background-size: 150px;
@@ -243,6 +250,7 @@ div.install_block_container div.install_block_container_fixed {
   -moz-box-shadow: 0px 8px 23px -10px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 8px 23px -10px rgba(0, 0, 0, 0.75);
 }
+
 div.install_block_container div.install_block_container_fixed button {
   background-image: url("/images/brick.jpg");
   background-size: 46px;
@@ -256,17 +264,25 @@ div.install_block_container div.install_block_container_fixed button {
 html.dark-mode {
   filter: invert(88%);
 }
+
 html.dark-mode img {
   filter: invert(100%) brightness(1.1) contrast(1.2);
 }
+
 html.dark-mode div#preloader,
 html.dark-mode div.dialog-preloader {
   background: white;
 }
+
 html.dark-mode div.guest-content {
   filter: invert(100%) brightness(1.1) contrast(1.2);
   background-image: url("/images/netherrack.png");
 }
+
+html.dark-mode div.frontend #page-content-wrapper {
+  background-image: none;
+}
+
 html.dark-mode div.install_block_container div.install_block_container_fixed {
   filter: invert(100%) brightness(1.1) contrast(1.2);
 }
@@ -276,6 +292,7 @@ div.guest-content div.login-card {
   top: 25%;
   left: 25%;
 }
+
 div.console-container div.filter-toggle {
   position: absolute;
   background: #F8F9FA;
@@ -288,6 +305,7 @@ div.console-container div.filter-toggle {
   color: rgba(0, 0, 0, 0.5);
   font-size: 12px;
 }
+
 div.console-container div.filter-container {
   background: #F8F9FA;
   border-bottom: 1px solid #dee2e6;
@@ -295,63 +313,78 @@ div.console-container div.filter-container {
   padding-left: 15px;
   padding-bottom: 5px;
 }
+
 div.console-container div.filter-container div.filter-options-container div.filter-options {
   margin-right: 15px;
 }
+
 div.console-container div.log {
   height: 80vh;
   display: flex;
   flex-direction: column;
   word-wrap: break-word;
 }
+
 div.console-container div.log div.console-control {
   display: flex;
 }
+
 div.console-container div.log div.console-control * {
   border-radius: 0px;
 }
+
 div.console-container div.log pre {
   font-size: 12px;
 }
+
 div.console-container div.log pre span.time-content {
   font-size: 9px;
   color: #888;
 }
+
 div.console-container div.log pre span.time-content span.time {
   color: goldenrod;
 }
+
 div.console-container div.log pre span.second-content {
   font-size: 9px;
   color: #888;
 }
+
 div.console-container div.log pre span.second-content span.second {
   color: indigo;
 }
+
 div.console-container div.log pre span.player-content {
   font-weight: bold;
 }
+
 div.console-container div.log pre span.player-content span.player {
   color: #2c94e0;
 }
+
 div.console-container div.log pre span.authme-login {
   color: #28a745;
 }
+
 div.console-container div.log pre span.authme-logout {
   color: red;
 }
+
 div.console-container div.log pre span.list {
   color: #999;
 }
+
 div.console-container div.log pre span.server {
   color: deepskyblue;
   font-weight: bold;
 }
+
 @media (max-width: 768px) {
   div.console-container div.log pre {
     font-size: 10px;
   }
 }
-
 span.ui-autocomplete-label {
   color: #28a745;
 }
@@ -433,17 +466,23 @@ li.ui-menu-item:hover span {
   top: 0;
   background: white;
 }
+
 .file-browser table img.fileicon {
   height: 30px;
 }
+
 .file-browser table .icon-col {
   width: 30px;
 }
+
 .file-browser table .size-col {
   width: 50px;
 }
+
 .file-browser table .date-col {
   width: 175px;
 }
+
+/*# sourceMappingURL=main.css.map */
 
 /*# sourceMappingURL=main.css.map */

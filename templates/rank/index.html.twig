@@ -1,0 +1,43 @@
+{% extends 'frontend.html.twig' %}
+
+{% block main_content %}
+
+    <h1>Rank</h1>
+
+    <div id="accordion">
+        {% for rankRow in rank %}
+        <h3>
+            {{ rankRow.category }} - {{ rankRow.key }}
+        </h3>
+        <div>
+            <p>
+                <table class="table">
+                    <thead>
+                        <tr><th>Lp.</th><th>Player</th><th>Value</th></tr>
+                    </thead>
+                    <tbody>
+                        {% for item in rankRow.rank %}
+                            <tr>
+                                <th>{{ item.position }}</th>
+                                <td>{{ item.player }}</td>
+                                <td>{{ item.value }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </p>
+        </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $( function() {
+            $( "#accordion" ).accordion({
+                heightStyle: "content"
+            });
+        } );
+    </script>
+{% endblock %}

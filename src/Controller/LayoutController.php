@@ -36,6 +36,22 @@ class LayoutController extends AbstractController
             ['label'=>'Players', 'href'=>$this->router->generate('players'), 'isActive'=>$current=='players'],
             ['label'=>'Logs', 'href'=>$this->router->generate('logs_index'), 'isActive'=>$current=='logs_index'],
             ['label'=>'Backups', 'href'=>$this->router->generate('backup_index'), 'isActive'=>$current=='backup_index'],
+            ['label'=>'Rank', 'href'=>$this->router->generate('rank'), 'isActive'=>$current=='rank'],
+        ];
+
+        return $this->render('layout/main_menu.html.twig', [
+            'menu' => $menu
+        ]);
+    }
+
+    /**
+     * @Route("/app_frontend_menu", name="app_frontend_menu")
+     */
+    public function frontendMenu (Request $request) {
+        $current = $request->get('current');
+        $menu = [
+            ['label'=>'Rank', 'href'=>$this->router->generate('rank'), 'isActive'=>$current=='rank'],
+            ['label'=>'Administration', 'href'=>$this->router->generate('app_main'), 'isActive'=>$current=='app_main']
         ];
 
         return $this->render('layout/main_menu.html.twig', [

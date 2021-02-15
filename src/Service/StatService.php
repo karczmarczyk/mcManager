@@ -4,6 +4,7 @@ namespace App\Service;
 
 use App\Entity\Stat;
 use App\Entity\StatDetail;
+use App\Repository\StatRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
 class StatService
@@ -15,16 +16,21 @@ class StatService
 
     private $playerService;
 
+    private $statRepository;
+
     /**
      * @param EntityManagerInterface $entityManager
      * @param PlayerService $playerService
+     * @param StatRepository $statRepository
      */
     public function __construct(
         EntityManagerInterface $entityManager,
-        PlayerService $playerService
+        PlayerService $playerService,
+        StatRepository $statRepository
     ) {
         $this->em = $entityManager;
         $this->playerService = $playerService;
+        $this->statRepository = $statRepository;
     }
 
     public function fill ($date): ?Stat

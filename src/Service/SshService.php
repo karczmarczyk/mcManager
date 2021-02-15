@@ -4,6 +4,7 @@
 namespace App\Service;
 
 
+use App\Entity\User;
 use phpseclib\Net\SSH2;
 use phpseclib\Net\SFTP;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
@@ -26,20 +27,41 @@ class SshService
     private $login;
     private $password;
 
+    private $params;
+    private $tokenStorage;
+
+
     public function __construct(TokenStorageInterface $tokenStorage, ParameterBagInterface $params, $sshHost, $sshPort)
     {
+        $this->params = $params;
+        $this->tokenStorage = $tokenStorage;
+
         if (!is_null($tokenStorage) && !is_null($tokenStorage->getToken())) {
             $user = $tokenStorage->getToken()->getUser();
-
-            $this->login = $user->getUsername();
-            $this->password = $user->getPassword();
+            if ($user instanceof User) {
+                setUserFromToken ();
+            } else {
+                //$this->setTechnicalUser();
+            }
         } else {
-            // @TODO
-            $this->login = $params->get('technicalUser');
-            $this->password = $params->get('technicalPass');
+            $this->setTechnicalUser();
         }
+
         $this->sshHost = $sshHost;
         $this->sshPort = $sshPort;
+    }
+
+    private function setUserFromToken ()
+    {
+        $user = $this->tokenStorage->getToken()->getUser();
+        $this->login = $user->getUsername();
+        $this->password = $user->getPassword();
+    }
+
+    private function setTechnicalUser ()
+    {
+        $this->login = $this->params->get('technicalUser');
+        $this->password = $this->params->get('technicalPass');
     }
 
     public function setCredentials ($login, $password)
