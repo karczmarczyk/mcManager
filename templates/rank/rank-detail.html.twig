@@ -1,6 +1,8 @@
 {% for rankRow in rank %}
 <h1>{{ rankRow.category | replace ({'minecraft:': ""}) }} - {{ rankRow.key | replace ({'minecraft:': ""}) }}</h1>
-<div>
+<span style="color: #ccc; font-size: 14px;">({{ stat.datetime | date ("Y-m-d H:i:s") }})</span>
+
+    <div>
     <p>
         <table class="table">
             <thead>
