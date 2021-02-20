@@ -10,12 +10,10 @@
         <tbody>
             {% for paramName, paramValue in category %}
                 <tr>
-                    <td style="width: 80%">
-                        <a class="link-dialog-2"
+                    <td style="width: 80%"><a class="link-dialog-2 see-more"
                            title="Rank"
                            data-dialog-content-as-html="1"
-                           href="{{ path('rank_detail', {'category':categoryName, 'key':paramName}) }}">{{ paramName }}</a>
-                    </td>
+                           href="{{ path('rank_detail', {'category':categoryName, 'key':paramName}) }}">{{ paramName }}</a></td>
                     <td style="text-align: left">{{ paramValue }}</td>
                 </tr>
             {% endfor %}

@@ -247,13 +247,13 @@ div.main_server_info {
   }
 }
 
-#dialog-simple {
+.dialog-simple {
   overflow: hidden;
 
   div.dialog-simple-menu {
     //position: fixed;
   }
-  #dialog-simple-content {
+  .dialog-simple-content {
     margin-top: 10px;
     overflow-y: scroll;
     height: 90%;
@@ -309,4 +309,8 @@ div.frontend #page-content-wrapper {
   //width: 100%;
   //height: 100vh;
 
+}
+
+a.see-more {
+  color: #007bff;
 }
