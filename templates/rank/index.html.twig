@@ -2,7 +2,7 @@
 
 {% block main_content %}
 
-    <h1>Rank</h1>
+    <h1>Rank <span style="color: #ccc; font-size: 14px; float:right; margin-top: 12px; margin-right: 5px">({{ stat.datetime | date ("Y-m-d H:i:s") }})</span></h1>
 
     <div id="accordion">
         {% for rankRow in rank %}

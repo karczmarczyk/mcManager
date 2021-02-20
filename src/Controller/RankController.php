@@ -28,7 +28,8 @@ class RankController extends AbstractController
         ]);
 
         return $this->render('rank/index.html.twig', [
-            'rank' => $rank
+            'rank' => $rank,
+            'stat' => $stat
         ]);
     }
 
@@ -47,7 +48,8 @@ class RankController extends AbstractController
         ]);
 
         return $this->render('rank/rank-detail.html.twig', [
-            'rank' => $rank
+            'rank' => $rank,
+            'stat' => $stat
         ]);
     }
 }
