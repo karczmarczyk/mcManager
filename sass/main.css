@@ -3,18 +3,36 @@
  * Copyright 2013-2019 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/LICENSE)
  */
+body {
+  position: relative;
+}
 body div.app-version {
   left: 3px;
   bottom: 3px;
-  position: absolute;
+  position: fixed;
   background: rgba(255, 255, 255, 0.4);
   padding: 1px 10px;
   border-radius: 5px;
   color: #555;
   font-size: 10px;
   border: 1px solid #555;
+  text-align: center;
 }
 
+@media (max-width: 900px) {
+  body div.app-version {
+    bottom: 3px;
+    width: 50%;
+    margin: 10px auto auto;
+    position: relative;
+    background: white;
+    padding: 1px 10px;
+    border-radius: 5px;
+    color: #555;
+    font-size: 10px;
+    border: 1px solid #555;
+  }
+}
 img.main-logo {
   width: 200px;
 }
