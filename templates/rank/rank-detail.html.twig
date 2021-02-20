@@ -1,5 +1,5 @@
 {% for rankRow in rank %}
-<h1>{{ rankRow.category }} - {{ rankRow.key }}</h1>
+<h1>{{ rankRow.category | replace ({'minecraft:': ""}) }} - {{ rankRow.key | replace ({'minecraft:': ""}) }}</h1>
 <div>
     <p>
         <table class="table">
