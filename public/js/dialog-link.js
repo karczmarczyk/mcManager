@@ -17,11 +17,11 @@ function openDialogWithDynamicContent(id, elem) {
         success: function(msg) {
             dialogContent = msg;
             if (html==1) {
-                $('#file-manager-file-content-grep').hide();
-                $('#' + id + '-content').html(msg);
+                $('#'+id+' .file-manager-file-content-grep').hide();
+                $('#'+id+' .dialog-simple-content').html(msg);
             } else {
-                $('#file-manager-file-content-grep').show();
-                $('#' + id + '-content').text(msg);
+                $('#'+id+' .file-manager-file-content-grep').show();
+                $('#'+id+' .dialog-simple-content').text(msg);
             }
             $('#'+id).dialog('open');
             $('#'+id).dialog( "option", "title", title );
