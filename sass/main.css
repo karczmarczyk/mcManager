@@ -203,11 +203,10 @@ div.main_server_info span.power_off {
   padding: 0px 10px;
 }
 
-.dialog-simple {
+#dialog-simple {
   overflow: hidden;
 }
-.dialog-simple .dialog-simple-content {
-  
+#dialog-simple #dialog-simple-content {
   margin-top: 10px;
   overflow-y: scroll;
   height: 90%;
@@ -279,7 +278,15 @@ div.guest-content div.login-card {
   width: 50vw;
   top: 25%;
   left: 25%;
+  padding: 0px;
 }
+div.guest-content div.login-card div.card-body {
+  padding: 0px;
+}
+div.guest-content div.login-card div.card-body #tabs {
+  padding: 0px;
+}
+
 div.console-container div.filter-toggle {
   position: absolute;
   background: #F8F9FA;
