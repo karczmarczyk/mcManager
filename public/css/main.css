@@ -3,6 +3,18 @@
  * Copyright 2013-2019 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/LICENSE)
  */
+body div.app-version {
+  left: 3px;
+  bottom: 3px;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.4);
+  padding: 1px 10px;
+  border-radius: 5px;
+  color: #555;
+  font-size: 10px;
+  border: 1px solid #555;
+}
+
 img.main-logo {
   width: 200px;
 }
@@ -302,6 +314,14 @@ div.guest-content div.login-card div.card-body #tabs {
   padding: 0px;
 }
 
+@media (max-width: 900px) {
+  div.guest-content div.login-card {
+    width: 98vw;
+    top: 10%;
+    left: 1%;
+    padding: 0px;
+  }
+}
 div.console-container div.filter-toggle {
   position: absolute;
   background: #F8F9FA;

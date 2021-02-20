@@ -5,11 +5,11 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Minecraft Manager">
+    <meta name="author" content="Mateusz Karczmarczyk">
 
-    <link rel="manifest" href="/manifest.json"/>
-    <link rel="shortcut icon" type="image/x-icon" href="/images/logo-full.png"/>
+    <link rel="manifest" href="/manifest.json?v={{ app_version }}"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/images/logo-full.png?v={{ app_version }}"/>
 
     <title>McManager - {% block title %}Welcome!{% endblock %}</title>
 
@@ -17,13 +17,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 
     <!-- Bootstrap core CSS -->
-    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css?v={{ app_version }}" rel="stylesheet">
 
     <!-- jQuery-UI -->
-    <link href="/vendor/jquery-ui-1.12.1/jquery-ui.css" rel="stylesheet">
+    <link href="/vendor/jquery-ui-1.12.1/jquery-ui.css?v={{ app_version }}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="/css/main.css" rel="stylesheet">
+    <link href="/css/main.css?v={{ app_version }}" rel="stylesheet">
 
     {% block stylesheets %}{% endblock %}
 
@@ -86,14 +86,14 @@
 </div>
 
 <!-- Bootstrap core JavaScript -->
-<script src="/vendor/jquery/jquery.min.js"></script>
-<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="/vendor/jquery-ui-1.12.1/jquery-ui.js"></script>
-<script src="/vendor/Gauge-Meter-Plugin/GaugeMeter.js"></script>
-<script src="/js/preloader.js"></script>
-<script src="/js/dialog-link.js"></script>
-<script src="/js/darkmode.js"></script>
-<script src="/js/domurl/url.js"></script>
+<script src="/vendor/jquery/jquery.min.js?v={{ app_version }}"></script>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js?v={{ app_version }}"></script>
+<script src="/vendor/jquery-ui-1.12.1/jquery-ui.js?v={{ app_version }}"></script>
+<script src="/vendor/Gauge-Meter-Plugin/GaugeMeter.js?v={{ app_version }}"></script>
+<script src="/js/preloader.js?v={{ app_version }}"></script>
+<script src="/js/dialog-link.js?v={{ app_version }}"></script>
+<script src="/js/darkmode.js?v={{ app_version }}"></script>
+<script src="/js/domurl/url.js?v={{ app_version }}"></script>
 
 <!-- Menu Toggle Script -->
 <script>
@@ -147,7 +147,7 @@
 
 {% block javascripts %}{% endblock %}
 
-
+<div class="app-version">v{{ app_version }} &reg; Mateusz Karczmarczyk {{ "now"|date("Y") }}</div>
 </body>
 
 </html>
