@@ -203,10 +203,11 @@ div.main_server_info span.power_off {
   padding: 0px 10px;
 }
 
-#dialog-simple {
+.dialog-simple {
   overflow: hidden;
 }
-#dialog-simple #dialog-simple-content {
+.dialog-simple .dialog-simple-content {
+  
   margin-top: 10px;
   overflow-y: scroll;
   height: 90%;
