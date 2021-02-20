@@ -1,5 +1,5 @@
 {% for categoryName, category in stats.stats %}
-    <h2>{{ categoryName }}</h2>
+    <h2>{{ categoryName | replace ({'minecraft:': ""}) }}</h2>
     <table class="table table-responsive-sm">
 {#        <thead>#}
 {#            <tr>#}
@@ -13,7 +13,7 @@
                     <td style="width: 80%"><a class="link-dialog-2 see-more"
                            title="Rank"
                            data-dialog-content-as-html="1"
-                           href="{{ path('rank_detail', {'category':categoryName, 'key':paramName}) }}">{{ paramName }}</a></td>
+                           href="{{ path('rank_detail', {'category':categoryName, 'key':paramName}) }}">{{ paramName | replace ({'minecraft:': ""}) }}</a></td>
                     <td style="text-align: left">{{ paramValue }}</td>
                 </tr>
             {% endfor %}

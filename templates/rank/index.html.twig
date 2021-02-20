@@ -7,7 +7,7 @@
     <div id="accordion">
         {% for rankRow in rank %}
         <h3>
-            {{ rankRow.category }} - {{ rankRow.key }}
+            {{ rankRow.category | replace ({'minecraft:': ""}) }} - {{ rankRow.key | replace ({'minecraft:': ""}) }}
         </h3>
         <div>
             <p>
