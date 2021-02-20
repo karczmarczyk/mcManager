@@ -41,6 +41,12 @@ $(document).ready(function(){
         return false;
     });
 
+    /* uruchamia dialog */
+    $(document).on("click", "a.link-dialog-2" , function() {
+        openDialogWithDynamicContent('dialog-simple-2',$(this));
+        return false;
+    });
+
     $('#file-manager-file-content-grep').keypress(function (e) {
         if (e.which == 13) {
             let match = $('#file-manager-file-content-grep').val();

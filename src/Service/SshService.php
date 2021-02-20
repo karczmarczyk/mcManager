@@ -39,7 +39,7 @@ class SshService
         if (!is_null($tokenStorage) && !is_null($tokenStorage->getToken())) {
             $user = $tokenStorage->getToken()->getUser();
             if ($user instanceof User) {
-                setUserFromToken ();
+                $this->setUserFromToken ();
             } else {
                 //$this->setTechnicalUser();
             }

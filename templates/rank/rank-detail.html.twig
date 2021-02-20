@@ -1,0 +1,21 @@
+{% for rankRow in rank %}
+<h1>{{ rankRow.category }} - {{ rankRow.key }}</h1>
+<div>
+    <p>
+        <table class="table">
+            <thead>
+                <tr><th>Lp.</th><th>Player</th><th>Value</th></tr>
+            </thead>
+            <tbody>
+                {% for item in rankRow.rank %}
+                    <tr>
+                        <th>{{ item.position }}</th>
+                        <td>{{ item.player }}</td>
+                        <td>{{ item.value }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </p>
+</div>
+{% endfor %}

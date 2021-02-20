@@ -31,4 +31,23 @@ class RankController extends AbstractController
             'rank' => $rank
         ]);
     }
+
+    /**
+     * @Route("/rank/{category}/{key}", name="rank_detail")
+     * @param $category
+     * @param $key
+     * @param RankService $rankService
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function rankDetail($category, $key, RankService $rankService)
+    {
+        $stat = $rankService->getLastStat();
+        $rank = $rankService->getBestInCategories($stat->getId(),[
+            new StatDTO($category, $key),
+        ]);
+
+        return $this->render('rank/rank-detail.html.twig', [
+            'rank' => $rank
+        ]);
+    }
 }

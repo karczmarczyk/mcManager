@@ -75,6 +75,13 @@
     </div>
     <pre id="dialog-simple-content"></pre>
 </div>
+<div id="dialog-simple-2">
+    <div class="dialog-simple-menu">
+        <input placeholder="search.."
+               class="form-control" id="file-manager-file-content-grep" name="fileManagerFileContentGrep" />
+    </div>
+    <pre id="dialog-simple-content"></pre>
+</div>
 
 <!-- Bootstrap core JavaScript -->
 <script src="/vendor/jquery/jquery.min.js"></script>
@@ -94,7 +101,7 @@
     });
 
     $( function() {
-        $( "#dialog-simple" ).dialog({
+        $( "#dialog-simple, #dialog-simple-2" ).dialog({
             'title':'',
             'autoOpen':false,
             'modal':true,
