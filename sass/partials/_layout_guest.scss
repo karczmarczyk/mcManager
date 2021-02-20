@@ -2,6 +2,8 @@ body {
   overflow-y: hidden; /* Hide vertical scrollbar */
   overflow-x: hidden; /* Hide horizontal scrollbar */
 
+  position: relative;
+
   div.guest-content {
     background-image: url("/images/dirt.png");
     background-size: 150px;

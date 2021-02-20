@@ -3,6 +3,7 @@ body {
   /* Hide vertical scrollbar */
   overflow-x: hidden;
   /* Hide horizontal scrollbar */
+  position: relative;
 }
 
 body div.guest-content {
