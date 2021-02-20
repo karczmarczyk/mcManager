@@ -14,3 +14,14 @@ div.guest-content {
     }
   }
 }
+
+@media (max-width:900px) {
+  div.guest-content {
+    div.login-card {
+      width: 98vw;
+      top: 10%;
+      left: 1%;
+      padding: 0px;
+    }
+  }
+}

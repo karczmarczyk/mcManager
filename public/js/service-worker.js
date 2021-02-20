@@ -1,4 +1,4 @@
-const CACHE_NAME = 'mcmcjaciekrece_20201103';
+const CACHE_NAME = 'mcmcjaciekrece_20210220';
 
 // List of files which are store in cache.
 let CACHED_FILES = [
