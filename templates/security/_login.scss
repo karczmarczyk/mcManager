@@ -3,7 +3,14 @@ div.guest-content {
     width: 50vw;
     top: 25%;
     left: 25%;
+    padding: 0px;
     div.card-body {
+
+      padding: 0px;
+
+      #tabs {
+        padding:0px;
+      }
     }
   }
 }
