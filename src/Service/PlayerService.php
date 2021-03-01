@@ -4,8 +4,10 @@
 namespace App\Service;
 
 
+use App\Repository\PlayerRepository;
 use App\Service\Dto\Player;
 use App\Utils\FileTool;
+use Doctrine\ORM\EntityManagerInterface;
 
 class PlayerService
 {
@@ -27,19 +29,34 @@ class PlayerService
     private $minecraftServerService;
 
     /**
+     * @var EntityManagerInterface
+     */
+    private $em;
+
+    /**
+     * @var PlayerRepository
+     */
+    private $playerRepository;
+
+    /**
      * PlayerService constructor.
      * @param SshService $conn
      * @param FileManagerService $fileManagerService
      * @param CommandService $commandService
      * @param MinecraftServerService $minecraftServerService
+     * @param EntityManagerInterface $entityManager
+     * @param PlayerRepository $playerRepository
      */
     public function __construct(SshService $conn, FileManagerService $fileManagerService,
-                                CommandService $commandService, MinecraftServerService $minecraftServerService)
+                                CommandService $commandService, MinecraftServerService $minecraftServerService,
+                                EntityManagerInterface $entityManager, PlayerRepository $playerRepository)
     {
         $this->conn = $conn;
         $this->fileManager = $fileManagerService;
         $this->command = $commandService;
         $this->minecraftServerService = $minecraftServerService;
+        $this->em = $entityManager;
+        $this->playerRepository = $playerRepository;
     }
 
     /**
@@ -80,6 +97,36 @@ class PlayerService
         $playerStats = json_decode( $fileJsonContent , true );
 //        print_r($playerStats); exit;
         return $playerStats;
+    }
+
+    /**
+     * Uzupełnia / aktualizuje listę w bazie danych
+     */
+    public function fillDb () {
+        foreach ($this->getPlayers() as $player) {
+            $this->addOrUpdate($player);
+        }
+    }
+
+    /**
+     * @param Player $player
+     * @return \App\Entity\Player
+     */
+    public function addOrUpdate (Player $player):\App\Entity\Player {
+        $playerDb = $this->playerRepository->findOneBy([
+            'playerUuid' => $player->getUuid()
+        ]);
+
+        if (is_null($playerDb)) {
+            $playerDb = new \App\Entity\Player();
+            $playerDb->setPlayerUuid($player->getUuid());
+        }
+
+        $playerDb->setPlayerName($player->getName());
+        $this->em->persist($playerDb);
+        $this->em->flush();
+
+        return $playerDb;
     }
 
     /**
