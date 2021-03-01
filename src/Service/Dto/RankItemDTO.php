@@ -8,6 +8,7 @@ class RankItemDTO
     private $playerUuid;
     private $value;
     private $position;
+    private $noData = false;
 
     /**
      * @return mixed
@@ -72,6 +73,24 @@ class RankItemDTO
     {
         $this->position = $position;
     }
+
+    /**
+     * @return bool
+     */
+    public function isNoData(): bool
+    {
+        return $this->noData;
+    }
+
+    /**
+     * @param bool $noData
+     */
+    public function setNoData(bool $noData): void
+    {
+        $this->noData = $noData;
+    }
+
+
 
 
 }

@@ -5,6 +5,7 @@ namespace App\Service;
 
 
 use App\Entity\Stat;
+use App\Repository\PlayerRepository;
 use App\Repository\StatDetailRepository;
 use App\Repository\StatRepository;
 use App\Service\Dto\RankItemDTO;
@@ -20,23 +21,48 @@ class RankService
      */
     private $em;
 
+    /**
+     * @var StatRepository
+     */
     private $statRepository;
 
+    /**
+     * @var StatDetailRepository
+     */
     private $statDetailRepository;
+
+    /**
+     * @var PlayerRepository
+     */
+    private $playerRepository;
+
+    private $players = [];
 
     /**
      * @param EntityManagerInterface $entityManager
      * @param StatRepository $statRepository
      * @param StatDetailRepository $statDetailRepository
+     * @param PlayerRepository $playerRepository
      */
     public function __construct(
         EntityManagerInterface $entityManager,
         StatRepository $statRepository,
-        StatDetailRepository $statDetailRepository
+        StatDetailRepository $statDetailRepository,
+        PlayerRepository $playerRepository
     ) {
         $this->em = $entityManager;
         $this->statRepository = $statRepository;
         $this->statDetailRepository = $statDetailRepository;
+        $this->playerRepository = $playerRepository;
+
+        $this->fetchPlayers();
+    }
+
+    private function fetchPlayers () {
+        $players = $this->playerRepository->findAll();
+        foreach ($players as $player) {
+            $this->players[$player->getPlayerUuid()] = $player->getPlayerName();
+        }
     }
 
     public function getLastStat (): Stat {
@@ -76,15 +102,65 @@ class RankService
             $result = $query->getResult();
 
             $position = 1;
+            $usedPlayers = [];
+            $rankCorrectOrder = [];
+            $rankWithData = [];
+
+            // ustalam dane użytkowników dla których mam dane
             foreach ($result as $item) {
                 $rankItem = new RankItemDTO ();
                 $rankItem->setPlayer($item['player']);
                 $rankItem->setPlayerUuid($item['player_uuid']);
                 $rankItem->setValue($item['key_value']);
-                $rankItem->setPosition($position);
-                $rankTmp['rank'][] = $rankItem;
-                $position ++;
+                $rankItem->setPosition(0);
+                $rankItem->setNoData(false);
+
+                $rankWithData[] = $rankItem;
+
+                $usedPlayers [$item['player_uuid']] = $item['player'];
             }
+
+            if ($stat->getSort() === StatDTO::$ASC) {
+                foreach ($this->players as $playerUuid => $playerName) {
+                    if (isset($usedPlayers[$playerUuid])) continue;
+
+                    $rankItem = new RankItemDTO ();
+                    $rankItem->setPlayer($playerName);
+                    $rankItem->setPlayerUuid($playerUuid);
+                    $rankItem->setValue(0);
+                    $rankItem->setPosition($position);
+                    $rankItem->setNoData(true);
+
+                    $rankCorrectOrder[] = $rankItem;
+
+                    $position++;
+                }
+            }
+
+            foreach ($rankWithData as $rankItem) {
+                $rankItem->setPosition($position);
+                $rankCorrectOrder[] = $rankItem;
+                $position++;
+            }
+
+            if ($stat->getSort() === StatDTO::$DESC) {
+                foreach ($this->players as $playerUuid => $playerName) {
+                    if (isset($usedPlayers[$playerUuid])) continue;
+
+                    $rankItem = new RankItemDTO ();
+                    $rankItem->setPlayer($playerName);
+                    $rankItem->setPlayerUuid($playerUuid);
+                    $rankItem->setValue(0);
+                    $rankItem->setPosition($position);
+                    $rankItem->setNoData(true);
+
+                    $rankCorrectOrder[] = $rankItem;
+
+                    $position++;
+                }
+            }
+
+            $rankTmp['rank'] = $rankCorrectOrder;
 
             $rank[] = $rankTmp;
         }
