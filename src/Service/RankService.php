@@ -10,6 +10,7 @@ use App\Repository\StatDetailRepository;
 use App\Repository\StatRepository;
 use App\Service\Dto\RankItemDTO;
 use App\Service\Dto\StatDTO;
+use App\Service\RankValueFormatter\ValueFormatterInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Query\ResultSetMapping;
 
@@ -111,7 +112,7 @@ class RankService
                 $rankItem = new RankItemDTO ();
                 $rankItem->setPlayer($item['player']);
                 $rankItem->setPlayerUuid($item['player_uuid']);
-                $rankItem->setValue($item['key_value']);
+                $rankItem->setValue($this->valueFormatter($stat->getCategory(), $stat->getKey(),$item['key_value']));
                 $rankItem->setPosition(0);
                 $rankItem->setNoData(false);
 
@@ -127,7 +128,7 @@ class RankService
                     $rankItem = new RankItemDTO ();
                     $rankItem->setPlayer($playerName);
                     $rankItem->setPlayerUuid($playerUuid);
-                    $rankItem->setValue(0);
+                    $rankItem->setValue($this->valueFormatter($stat->getCategory(), $stat->getKey(),0));
                     $rankItem->setPosition($position);
                     $rankItem->setNoData(true);
 
@@ -150,7 +151,7 @@ class RankService
                     $rankItem = new RankItemDTO ();
                     $rankItem->setPlayer($playerName);
                     $rankItem->setPlayerUuid($playerUuid);
-                    $rankItem->setValue(0);
+                    $rankItem->setValue($this->valueFormatter($stat->getCategory(), $stat->getKey(),0));
                     $rankItem->setPosition($position);
                     $rankItem->setNoData(true);
 
@@ -166,5 +167,34 @@ class RankService
         }
 
         return $rank;
+    }
+
+    /**
+     * @param $keyCategory
+     * @param $keyName
+     * @param $value
+     * @return mixed
+     */
+    public function valueFormatter ($keyCategory, $keyName, $value) {
+        $className = "";
+        $t1 = explode("_" ,str_replace("minecraft:","",$keyCategory));
+        $t2 = explode("_" ,str_replace("minecraft:","",$keyName));
+        $t = array_merge($t1, $t2);
+        foreach ($t as $p) {
+            $className.= ucfirst($p);
+        }
+
+        $fullClassName = "App\\Service\\RankValueFormatter\\".$className;
+
+        if(!class_exists($fullClassName)) {
+            return $value;
+        }
+
+        $formatter = new $fullClassName;
+        if (!($formatter instanceof ValueFormatterInterface)) {
+            return $value;
+        }
+
+        return $formatter->format($value);
     }
 }
