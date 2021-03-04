@@ -28,7 +28,7 @@ class AppTool
         return $number;
     }
 
-    public static function secundToHumanTime ($value)
+    public static function secondsToHumanTime ($value)
     {
         $left = $value;
 
@@ -38,7 +38,7 @@ class AppTool
         $left = $left - $h*3600;
         $i = (int) ($left / 60);
         $left = $left - $i*60;
-        $s = $left;
+        $s = (int) $left;
 
         $hP = str_pad($h, 2, "0", STR_PAD_LEFT);
         $iP = str_pad($i, 2, "0", STR_PAD_LEFT);

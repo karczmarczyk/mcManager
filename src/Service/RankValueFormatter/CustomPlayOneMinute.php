@@ -11,6 +11,6 @@ class CustomPlayOneMinute implements ValueFormatterInterface
 
     public function format(String $value)
     {
-        return AppTool::secundToHumanTime($value);
+        return AppTool::secondsToHumanTime($value/20);
     }
 }
