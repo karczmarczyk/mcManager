@@ -3,24 +3,73 @@
 namespace App\Service;
 
 
+
 class MinecraftServerService
 {
+    /**
+     * @var CommandService
+     */
     private $commandService;
+    /**
+     * @var SshService
+     */
     private $conn;
 
-    public function __construct(CommandService $commandService, SshService $sshService)
+    /**
+     * Konfiguracja serwera
+     * @var
+     */
+    private $host;
+    private $port;
+
+    /**
+     * MinecraftServerService constructor.
+     * @param CommandService $commandService
+     * @param SshService $sshService
+     * @param $host
+     * @param $port
+     */
+    public function __construct(CommandService $commandService, SshService $sshService, $host, $port)
     {
         $this->commandService = $commandService;
         $this->conn = $sshService;
+        $this->host = $host;
+        $this->port = $port;
     }
 
     /**
      * @return bool
      */
-    public function isRunning ()
+    public function isRunning () : bool
+    {
+        return $this->isRunningCheckPortListening();
+    }
+
+    /**
+     * Ustala czy serwer jset włączony na podstawie tego czy proces istnieje
+     * @return bool
+     * @throws \Exception
+     */
+    private function isRunningCheckProcessExist (): bool
     {
         $result = $this->conn->getSsh()->exec($this->commandService->getMcServerStatus());
         if (trim($result)==='Server is running') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * UStala czy serwer jest włączony na podstawie tego czy port nasłuchuje
+     * @return bool
+     */
+    private function  isRunningCheckPortListening(): bool
+    {
+        $connection = @fsockopen($this->host, $this->port);
+
+        if (is_resource($connection)) {
+            fclose($connection);
             return true;
         } else {
             return false;
