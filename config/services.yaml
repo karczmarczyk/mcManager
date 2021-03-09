@@ -9,6 +9,8 @@ parameters:
     fileMaxSizeForPreview: 1000000 #Byte
     technicalUser: '%env(resolve:TECHNICAL_USER)%'
     technicalPass: '%env(resolve:TECHNICAL_PASS)%'
+    minecraftServer.host: 'karczmarczyk.servehttp.com'
+    minecraftServer.port: 25565
 
 services:
     # default configuration for services in *this* file
@@ -39,3 +41,7 @@ services:
         arguments:
             $sshHost: '%ssh.host%'
             $sshPort: '%ssh.port%'
+    App\Service\MinecraftServerService:
+        arguments:
+            $host: '%minecraftServer.host%'
+            $port: '%minecraftServer.port%'
