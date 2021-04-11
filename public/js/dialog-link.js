@@ -47,17 +47,17 @@ $(document).ready(function(){
         return false;
     });
 
-    $('#file-manager-file-content-grep').keypress(function (e) {
+    $('.file-manager-file-content-grep').keypress(function (e) {
         if (e.which == 13) {
-            let match = $('#file-manager-file-content-grep').val();
+            let match = $(this).val();
             console.log(match);
             if (match==='') {
-                $('#dialog-simple-content').text(dialogContent);
+                $(this).closest( '.dialog-simple').find('.dialog-simple-content').text(dialogContent);
                 return;
             }
             let t = [...dialogContent.matchAll(RegExp('.*'+match+'.*','ig'))].join(["\n"]);
             console.log(t);
-            $('#dialog-simple-content').text(
+            $(this).closest( '.dialog-simple').find('.dialog-simple-content').text(
                 t
             );
         }
