@@ -1,0 +1,27 @@
+BMg_wR18OmyMrNMM6xIk98MOguwBa0vHcl7EZ6Dh-suVihlwnlGBieXeX5Ced-M8yZACw_nWkPKDZ6V6e0mQBXc
+
+
+curl "https://android.googleapis.com/gcm/send/AAAAAhkoDoA:APA91bH1hJfmnZGvJG73rkGkHHeZQebAeJQ9s3gETzXzM0V97Zsm9tDe0RaS_dLs6kSbGusGpaAFWzUjXZDv1gFBTBmswrm-2t2d7-fc_nb0rNlNJwDD0ew5ri_75Bo9z0rCI8k_w-rf" \
+--request POST --header "TTL: 60" --header "Content-Length: 0" \
+--header "Authorization: key=BMg_wR18OmyMrNMM6xIk98MOguwBa0vHcl7EZ6Dh-suVihlwnlGBieXeX5Ced-M8yZACw_nWkPKDZ6V6e0mQBXc"
+
+
+curl "https://android.googleapis.com/gcm/send/AAAAAhkoDoA:APA91bH1hJfmnZGvJG73rkGkHHeZQebAeJQ9s3gETzXzM0V97Zsm9tDe0RaS_dLs6kSbGusGpaAFWzUjXZDv1gFBTBmswrm-2t2d7-fc_nb0rNlNJwDD0ew5ri_75Bo9z0rCI8k_w-rf" \
+--request POST --header "TTL: 60" --header "Content-Length: 0" \
+--header "Authorization: key=b83e5073a331312b3c5b4fde5d4dffe763b04ba9"
+
+
+curl "https://android.googleapis.com/gcm/send/AAAAAhkoDoA:APA91bH1hJfmnZGvJG73rkGkHHeZQebAeJQ9s3gETzXzM0V97Zsm9tDe0RaS_dLs6kSbGusGpaAFWzUjXZDv1gFBTBmswrm-2t2d7fc_nb0rNlNJwDD0ew5ri_75Bo9z0rCI8k_w-rf" --request POST --header "TTL: 60" --header "Content-Length: 0"
+
+
+curl "https://android.googleapis.com/gcm/send/AAAAAhkoDoA:APA91bH1hJfmnZGvJG73rkGkHHeZQebAeJQ9s3gETzXzM0V97Zsm9tDe0RaS_dLs6kSbGusGpaAFWzUjXZDv1gFBTBmswrm-2t2d7-fc_nb0rNlNJwDD0ew5ri_75Bo9z0rCI8k_w-rf" \
+--request POST --header "TTL: 60" --header "Content-Length: 0" \
+--header "Authorization: key=AIzaSyAAlnnyKynsyj2OJipv5-86wFMHUDP_POg"
+
+curl "https://android.googleapis.com/gcm/send/AAAAAhkoDoA:APA91bH1hJfmnZGvJG73rkGkHHeZQebAeJQ9s3gETzXzM0V97Zsm9tDe0RaS_dLs6kSbGusGpaAFWzUjXZDv1gFBTBmswrm-2t2d7-fc_nb0rNlNJwDD0ew5ri_75Bo9z0rCI8k_w-rf" \
+--request POST --header "TTL: 60" --header "Content-Length: 0" \
+--header "Authorization: key=AIzaSyAFKyb81a2d5HFd0v6xqnL3AWRt118ky_Q"
+
+----------------------------------------
+
+https://stackoverflow.com/questions/37371990/how-can-i-send-a-firebase-cloud-messaging-notification-without-use-the-firebase

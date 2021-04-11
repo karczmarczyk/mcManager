@@ -1,6 +1,7 @@
 {
   "short_name": "mcManager",
   "name": "Minecraft Server Manager",
+  "gcm_sender_id": "9011990144",
   "description": "Managing mc server, players, backups.",
   "icons": [
     {

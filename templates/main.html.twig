@@ -148,6 +148,26 @@
 {% block javascripts %}{% endblock %}
 
 <div class="app-version">v{{ app_version }} &reg; Mateusz Karczmarczyk {{ "now"|date("Y") }}</div>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyBt7tiddH0UTtcZe1QEdAgmEM7GA4VZGvQ",
+        authDomain: "mcmanager-1adc8.firebaseapp.com",
+        projectId: "mcmanager-1adc8",
+        storageBucket: "mcmanager-1adc8.appspot.com",
+        messagingSenderId: "9011990144",
+        appId: "1:9011990144:web:3b50902fec4f91b9526065"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+</script>
 </body>
 
 </html>
