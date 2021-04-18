@@ -4,6 +4,23 @@
 
     <h1>Rank <span style="color: #ccc; font-size: 14px; float:right; margin-top: 12px; margin-right: 5px">({{ stat.datetime | date ("Y-m-d H:i:s") }})</span></h1>
 
+{#    <p>#}
+{#        <table class="table">#}
+{#            <thead>#}
+{#            <tr><th>Lp.</th><th>Player</th><th>Value</th></tr>#}
+{#            </thead>#}
+{#            <tbody>#}
+{#            {% for item in mainRankRow.rank %}#}
+{#                <tr>#}
+{#                    <th>{{ item.position }}</th>#}
+{#                    <td>{{ item.player }}</td>#}
+{#                    <td>{{ item.value }}</td>#}
+{#                </tr>#}
+{#            {% endfor %}#}
+{#            </tbody>#}
+{#        </table>#}
+{#    </p>#}
+
     <div id="accordion">
         {% for rankRow in rank %}
         <h3>
