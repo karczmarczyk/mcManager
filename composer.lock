@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "615b343df45436edac017d7570d6bcb7",
+    "content-hash": "a4c096506d6b28803baaf4fa88f7e91d",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1160,6 +1160,7 @@
                 "reflection",
                 "static"
             ],
+            "abandoned": "roave/better-reflection",
             "time": "2020-03-27T11:06:43+00:00"
         },
         {
@@ -1526,6 +1527,48 @@
             "time": "2020-05-22T08:12:19+00:00"
         },
         {
+            "name": "nicmart/tree",
+            "version": "0.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nicmart/Tree.git",
+                "reference": "c55ba47c64a3cb7454c22e6d630729fc2aab23ff"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nicmart/Tree/zipball/c55ba47c64a3cb7454c22e6d630729fc2aab23ff",
+                "reference": "c55ba47c64a3cb7454c22e6d630729fc2aab23ff",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1 || ^8.0"
+            },
+            "require-dev": {
+                "ergebnis/composer-normalize": "^2.8.0",
+                "ergebnis/license": "^1.0.0",
+                "ergebnis/php-cs-fixer-config": "^2.2.1",
+                "phpunit/phpunit": "^7.5.20"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Tree\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolò Martini",
+                    "email": "nicmartnic@gmail.com"
+                }
+            ],
+            "description": "A basic but flexible php tree data structure and a fluent tree builder implementation.",
+            "time": "2020-11-27T09:02:17+00:00"
+        },
+        {
             "name": "ocramius/package-versions",
             "version": "1.8.0",
             "source": {
@@ -1593,7 +1636,7 @@
             "require": {
                 "laminas/laminas-code": "^3.4.1",
                 "ocramius/package-versions": "^1.8.0",
-                "php": "~7.4.0",
+                "php": "~7.4.1",
                 "webimpress/safe-writer": "^2.0.1"
             },
             "conflict": {
@@ -2127,6 +2170,73 @@
                 "psr-3"
             ],
             "time": "2020-03-23T09:12:05+00:00"
+        },
+        {
+            "name": "rickselby/nbt",
+            "version": "4.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rickselby/NBT.git",
+                "reference": "0be3b9e34f18abcd924f57d5b52949d897fc2583"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rickselby/NBT/zipball/0be3b9e34f18abcd924f57d5b52949d897fc2583",
+                "reference": "0be3b9e34f18abcd924f57d5b52949d897fc2583",
+                "shasum": ""
+            },
+            "require": {
+                "nicmart/tree": "~0.2",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "^1.6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Nbt\\": "src/",
+                    "Nbt\\Tests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Justin Martin",
+                    "email": "frozenfire@thefrozenfire.com",
+                    "homepage": "https://github.com/TheFrozenFire",
+                    "role": "Developer"
+                },
+                {
+                    "name": "James Lowe",
+                    "homepage": "https://github.com/jegol",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Kevin Andrews",
+                    "email": "kevin@zvps.co.uk",
+                    "homepage": "https://github.com/Caffe1neAdd1ct",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Rick Selby",
+                    "email": "rick@selby-family.co.uk",
+                    "homepage": "https://github.com/rickselby",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Parser/Writer for the NBT file format",
+            "homepage": "https://github.com/rickselby/NBT",
+            "keywords": [
+                "NBT",
+                "binary",
+                "decode",
+                "encode"
+            ],
+            "time": "2020-12-15T07:25:23+00:00"
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -6517,12 +6627,12 @@
             "version": "1.8.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/webmozart/assert.git",
+                "url": "https://github.com/webmozarts/assert.git",
                 "reference": "ab2cb0b3b559010b75981b1bdce728da3ee90ad6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/ab2cb0b3b559010b75981b1bdce728da3ee90ad6",
+                "url": "https://api.github.com/repos/webmozarts/assert/zipball/ab2cb0b3b559010b75981b1bdce728da3ee90ad6",
                 "reference": "ab2cb0b3b559010b75981b1bdce728da3ee90ad6",
                 "shasum": ""
             },

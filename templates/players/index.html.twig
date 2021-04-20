@@ -21,11 +21,18 @@
                         <i class="fa fa-circle {% if player.playNow %}circle-green{% else %}circle-red{% endif %} " aria-hidden="true"></i>
                         {{ player.name }}</td>
                     <td>{{ player.lastActivityH }}</td>
-                    <td><a class="btn btn-primary btn-sm link-dialog"
+                    <td>
+                        <a class="btn btn-primary btn-sm link-dialog"
                            title="{{ player.name }} - {{ player.uuid }}"
                            data-dialog-content-as-html="1"
                            href="{{ path('player_stats',{'uuid':player.uuid}) }}">
                             stats
+                        </a>
+                        <a class="btn btn-primary btn-sm link-dialog"
+                           title="{{ player.name }} - {{ player.uuid }}"
+                           data-dialog-content-as-html="1"
+                           href="{{ path('player_details',{'uuid':player.uuid}) }}">
+                            details
                         </a>
                     </td>
                 </tr>

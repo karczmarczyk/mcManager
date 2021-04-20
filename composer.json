@@ -6,6 +6,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "phpseclib/phpseclib": "~2.0",
+        "rickselby/nbt": "^4.0",
         "sensio/framework-extra-bundle": "^5.5",
         "spatie/ssh": "^1.4",
         "symfony/asset": "5.1.*",
