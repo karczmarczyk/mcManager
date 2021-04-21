@@ -5,7 +5,10 @@ namespace App\Service;
 
 
 use App\Repository\PlayerRepository;
+use App\Service\Dto\Enchantment;
+use App\Service\Dto\InventoryItem;
 use App\Service\Dto\Player;
+use App\Service\Dto\PlayerDetails;
 use App\Utils\FileTool;
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -65,8 +68,7 @@ class PlayerService
      */
     public function getPlayers ()
     {
-        $userPath = $this->command->getServerPath()
-            .DIRECTORY_SEPARATOR."world".DIRECTORY_SEPARATOR."playerdata".DIRECTORY_SEPARATOR;
+        $userPath = $this->getUserFilesPath();
         $files = $this->fileManager->getFileList($userPath, true);
         $players = [];
         $activePlayers = $this->minecraftServerService->getPlayersOnlineList();
@@ -86,6 +88,12 @@ class PlayerService
         return $players;
     }
 
+    private function getUserFilesPath ()
+    {
+        return $this->command->getServerPath()
+            .DIRECTORY_SEPARATOR."world".DIRECTORY_SEPARATOR."playerdata".DIRECTORY_SEPARATOR;
+    }
+
     /**
      *
      */
@@ -97,6 +105,95 @@ class PlayerService
         $playerStats = json_decode( $fileJsonContent , true );
 //        print_r($playerStats); exit;
         return $playerStats;
+    }
+
+    /**
+     * @param $uuid
+     * @return \PlayerDetails
+     */
+    public function getPlayerDetails ($uuid): PlayerDetails
+    {
+        $content = $this->getUserFileContentByUuid($uuid);
+
+        $nbtService = new \Nbt\Service(new \Nbt\DataHandler());
+        $tree = $nbtService->readString($content);
+
+        $playerDetails = new PlayerDetails ();
+        $playerDetails->setInventory($this->getInventory($tree));
+
+        return $playerDetails;
+    }
+
+    /**
+     * @param $tree
+     * @return array
+     */
+    public function getInventory ($tree): array
+    {
+        $inventoryList = [];
+
+        $Inventory = $tree->findChildByName('Inventory');
+        foreach ($Inventory->getChildren() as $child) {
+
+            $inventory = new InventoryItem();
+
+            foreach($child->getChildren() as $item) {
+
+                if ($item->getName() == 'Slot') {
+                    $inventory->setSlot($item->getValue());
+                }
+                else if ($item->getName() == 'id') {
+                    $inventory->setId($item->getValue());
+                }
+                else if ($item->getName() == 'Count') {
+                    $inventory->setCount($item->getValue());
+                }
+                else if ($item->getValue()==NULL) {
+                    foreach($item->getChildren() as $tag) {
+                        if ($tag->getName() == 'Enchantments') {
+                            // enchant - lista
+                            $tagT = [];
+                            foreach ($tag->getChildren() as $ttKey=>$t) {
+                                $enchantment = new Enchantment();
+                                foreach ($t->getChildren() as $tt) {
+                                    if ($tt->getName() == "id") {
+                                        $enchantment->setId($tt->getValue());
+                                    }
+                                    else if ($tt->getName() == "lvl") {
+                                        $enchantment->setLvl($tt->getValue());
+                                    }
+                                    $tagT[$ttKey] = $enchantment;
+                                }
+                            }
+                            $inventory->addTag($tag->getName(), $tagT);
+                        } else {
+                            // inne jednowymiarowe
+                            $inventory->addTag($tag->getName(), $tag->getValue());
+                        }
+                    }
+                }
+            }
+
+            $inventoryList[$inventory->getSlot()] = $inventory;
+        }
+
+        return $inventoryList;
+    }
+
+    /**
+     * @param $uuid
+     * @param bool $gzdecode
+     * @return false|String|null
+     */
+    public function getUserFileContentByUuid ($uuid, $gzdecode = true)
+    {
+        $userPath = $this->getUserFilesPath();
+        $file = $userPath . DIRECTORY_SEPARATOR . $uuid . ".dat";
+        $content = $this->fileManager->getFileContent($file);
+        if ($gzdecode) {
+            $content = gzdecode($content);
+        }
+        return $content;
     }
 
     /**

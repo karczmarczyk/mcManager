@@ -37,4 +37,21 @@ class PlayersController extends AbstractController
             'stats' => $stats
         ]);
     }
+
+    /**
+     * @Route("/players/{uuid}/details", name="player_details")
+     *
+     * @param PlayerService $playerService
+     * @param $uuid
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function getPlayerDetailsAction (PlayerService $playerService, $uuid)
+    {
+        $details = $playerService->getPlayerDetails($uuid);
+var_dump($details->getInventory());
+        return $this->render('players/_details.html.twig', [
+            'uuid' => $uuid,
+            'details' => $details
+        ]);
+    }
 }
