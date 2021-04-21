@@ -48,7 +48,7 @@ class PlayersController extends AbstractController
     public function getPlayerDetailsAction (PlayerService $playerService, $uuid)
     {
         $details = $playerService->getPlayerDetails($uuid);
-var_dump($details->getInventory());
+//var_dump($details->getInventory());
         return $this->render('players/_details.html.twig', [
             'uuid' => $uuid,
             'details' => $details
