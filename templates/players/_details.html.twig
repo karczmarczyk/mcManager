@@ -1,0 +1,43 @@
+<h2>Inventory</h2>
+<table class="table table-responsive-sm">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Count</th>
+            <th>Tag</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for inventory in details.inventory %}
+        <tr>
+            <td>
+                <img style="height: 64px"
+                        src="{{ path('images_icon',{'name':inventory.id | replace ({'minecraft:': "", '_': ""}), 'size': 32}) }}" />
+            </td>
+            <td>{{ inventory.id | replace ({'minecraft:': ""}) }}</td>
+            <td>{{ inventory.count }}</td>
+            <td>
+                {% for tag, value in inventory.tags %}
+                <div>
+                    <b>{{ tag }}</b><br />
+                    {% if tag=='Enchantments' %}
+                        <ul>
+                            {% for enchant in value %}
+                            <li>
+                                {{ enchant.id }}
+                                <br />
+                                {{ enchant.lvl }}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        {{ value }}
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
