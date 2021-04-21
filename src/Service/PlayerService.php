@@ -5,6 +5,7 @@ namespace App\Service;
 
 
 use App\Repository\PlayerRepository;
+use App\Service\Dto\Enchantment;
 use App\Service\Dto\InventoryItem;
 use App\Service\Dto\Player;
 use App\Service\Dto\PlayerDetails;
@@ -149,12 +150,19 @@ class PlayerService
                 }
                 else if ($item->getValue()==NULL) {
                     foreach($item->getChildren() as $tag) {
-                        if ($tag->getValue()==NULL) {
+                        if ($tag->getName() == 'Enchantments') {
                             // enchant - lista
                             $tagT = [];
                             foreach ($tag->getChildren() as $ttKey=>$t) {
+                                $enchantment = new Enchantment();
                                 foreach ($t->getChildren() as $tt) {
-                                    $tagT[$ttKey][$tt->getName()] = $tt->getValue();
+                                    if ($tt->getName() == "id") {
+                                        $enchantment->setId($tt->getValue());
+                                    }
+                                    else if ($tt->getName() == "lvl") {
+                                        $enchantment->setLvl($tt->getValue());
+                                    }
+                                    $tagT[$ttKey] = $enchantment;
                                 }
                             }
                             $inventory->addTag($tag->getName(), $tagT);
