@@ -469,6 +469,72 @@ li.ui-menu-item:hover span {
   margin-top: -18px;
 }
 
+div.inventory-container div.inventory {
+  position: relative;
+  width: 200px;
+  height: auto;
+  margin: 5px;
+  background: #eeeeee;
+  border: 1px solid #888888;
+  padding: 10px;
+  text-align: center;
+}
+
+div.inventory-container div.inventory div.inventory-nr {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #888;
+  text-shadow: white 1px 1px;
+  font-size: 12px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 4px;
+}
+
+div.inventory-container div.inventory div.inventory-count {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: white;
+  color: black;
+  font-size: 16px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  text-align: center;
+  padding: 4px;
+}
+
+div.inventory-container div.inventory div.inventory-img {
+  background: white;
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  padding: 20px;
+}
+
+div.inventory-container div.inventory div.inventory-head {
+  margin-top: 10px;
+  font-size: 16px;
+  color: crimson;
+}
+
+div.inventory-container div.inventory div.inventory-details {
+  font-size: 10px;
+  text-align: left;
+}
+
+div.inventory-container div.inventory div.inventory-details span.value {
+  font-size: 12px;
+}
+
+div.inventory-container div.inventory div.inventory-details ul {
+  padding: 0px 15px;
+  margin: 0px;
+}
+
 .guageMeterContainer {
   text-align: center;
 }
