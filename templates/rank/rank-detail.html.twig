@@ -1,23 +1,25 @@
-{% for rankRow in rank %}
-<h1>{{ rankRow.category | replace ({'minecraft:': ""}) }} - {{ rankRow.key | replace ({'minecraft:': ""}) }}</h1>
-<span style="color: #ccc; font-size: 14px;">({{ stat.datetime | date ("Y-m-d H:i:s") }})</span>
+<div style="white-space:normal">
+    {% for rankRow in rank %}
+    <h1>{{ rankRow.category | replace ({'minecraft:': ""}) }} - {{ rankRow.key | replace ({'minecraft:': ""}) }}</h1>
+    <span style="color: #ccc; font-size: 14px;">({{ stat.datetime | date ("Y-m-d H:i:s") }})</span>
 
-    <div>
-    <p>
-        <table class="table">
-            <thead>
-                <tr><th>Lp.</th><th>Player</th><th>Value</th></tr>
-            </thead>
-            <tbody>
-                {% for item in rankRow.rank %}
-                    <tr>
-                        <th>{{ item.position }}</th>
-                        <td>{{ item.player }}</td>
-                        <td>{{ item.value }}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </p>
+        <div>
+        <p>
+            <table class="table">
+                <thead>
+                    <tr><th>Lp.</th><th>Player</th><th>Value</th></tr>
+                </thead>
+                <tbody>
+                    {% for item in rankRow.rank %}
+                        <tr>
+                            <th>{{ item.position }}</th>
+                            <td>{{ item.player }}</td>
+                            <td>{{ item.value }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </p>
+    </div>
+    {% endfor %}
 </div>
-{% endfor %}

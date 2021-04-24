@@ -1,43 +1,39 @@
-<h2>Inventory</h2>
-<table class="table table-responsive-sm">
-    <thead>
-        <tr>
-            <th></th>
-            <th>Name</th>
-            <th>Count</th>
-            <th>Tag</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for inventory in details.inventory %}
-        <tr>
-            <td>
+<div style="white-space:normal">
+    <h2>Inventory</h2>
+
+    <div class="d-flex flex-wrap inventory-container">
+        {% for inventory in details.inventory %}
+        <div class="inventory">
+            <div class="inventory-count">{{ inventory.count }}</div>
+            <div class="inventory-nr">#{{ inventory.slot }}</div>
+            <div class="inventory-img">
                 <img style="height: 64px"
-                        src="{{ path('images_icon',{'name':inventory.id | replace ({'minecraft:': "", '_': ""}), 'size': 32}) }}" />
-            </td>
-            <td>{{ inventory.id | replace ({'minecraft:': ""}) }}</td>
-            <td>{{ inventory.count }}</td>
-            <td>
+                     src="{{ path('images_icon',{'name':inventory.id | replace ({'minecraft:': "", '_': ""}), 'size': 32}) }}" />
+            </div>
+            <div class="inventory-head">
+                {{ inventory.id | replace ({'minecraft:': ""}) }}
+            </div>
+            <div class="inventory-details">
                 {% for tag, value in inventory.tags %}
-                <div>
-                    <b>{{ tag }}</b><br />
-                    {% if tag=='Enchantments' %}
-                        <ul>
-                            {% for enchant in value %}
-                            <li>
-                                {{ enchant.id }}
-                                <br />
-                                {{ enchant.lvl }}
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    {% else %}
-                        {{ value }}
-                    {% endif %}
-                </div>
+                    <div>
+                        <b>{{ tag }}:</b>
+                        {% if tag=='Enchantments' %}
+                            <ul>
+                                {% for enchant in value %}
+                                    <li>
+                                        {{ enchant.id | replace ({'minecraft:': ""}) }}:
+                                        <span class="value">{{ enchant.lvl }}</span>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <span class="value">{{ value }}</span>
+                        {% endif %}
+                    </div>
                 {% endfor %}
-            </td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
