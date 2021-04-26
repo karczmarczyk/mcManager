@@ -1,39 +1,83 @@
 <div style="white-space:normal">
     <h2>Inventory</h2>
 
-    <div class="d-flex flex-wrap inventory-container">
-        {% for inventory in details.inventory %}
-        <div class="inventory">
-            <div class="inventory-count">{{ inventory.count }}</div>
-            <div class="inventory-nr">#{{ inventory.slot }}</div>
-            <div class="inventory-img">
-                <img style="height: 64px"
-                     src="{{ path('images_icon',{'name':inventory.id | replace ({'minecraft:': "", '_': ""}), 'size': 32}) }}" />
-            </div>
-            <div class="inventory-head">
-                {{ inventory.id | replace ({'minecraft:': ""}) }}
-            </div>
-            <div class="inventory-details">
-                {% for tag, value in inventory.tags %}
-                    <div>
-                        <b>{{ tag }}:</b>
-                        {% if tag=='Enchantments' %}
-                            <ul>
-                                {% for enchant in value %}
-                                    <li>
-                                        {{ enchant.id | replace ({'minecraft:': ""}) }}:
-                                        <span class="value">{{ enchant.lvl }}</span>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        {% else %}
-                            <span class="value">{{ value }}</span>
-                        {% endif %}
+    <div class="row">
+        <div class="col-md-4">
+            <div class="d-flex flex-wrap inventory-container">
+                {% for inventory in details.inventory %}
+                    {% if inventory.slot>=100 %}
+                    <div class="inventory">
+                        <div class="inventory-count">{{ inventory.count }}</div>
+                        <div class="inventory-nr">#{{ inventory.slot }}</div>
+                        <div class="inventory-img">
+                            <img style="height: 64px"
+                                 src="{{ path('images_icon',{'name':inventory.id | replace ({'minecraft:': "", '_': ""}), 'size': 32}) }}" />
+                        </div>
+                        <div class="inventory-head">
+                            {{ inventory.id | replace ({'minecraft:': ""}) }}
+                        </div>
+                        <div class="inventory-details">
+                            {% for tag, value in inventory.tags %}
+                                <div>
+                                    <b>{{ tag }}:</b>
+                                    {% if tag=='Enchantments' %}
+                                        <ul>
+                                            {% for enchant in value %}
+                                                <li>
+                                                    {{ enchant.id | replace ({'minecraft:': ""}) }}:
+                                                    <span class="value">{{ enchant.lvl }}</span>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% else %}
+                                        <span class="value">{{ value }}</span>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        </div>
                     </div>
+                    {% endif %}
                 {% endfor %}
             </div>
         </div>
-        {% endfor %}
+        <div class="col-md-8">
+            <div class="d-flex flex-wrap inventory-container">
+                {% for inventory in details.inventory %}
+                    {% if inventory.slot<100 %}
+                    <div class="inventory">
+                        <div class="inventory-count">{{ inventory.count }}</div>
+                        <div class="inventory-nr">#{{ inventory.slot }}</div>
+                        <div class="inventory-img">
+                            <img style="height: 64px"
+                                 src="{{ path('images_icon',{'name':inventory.id | replace ({'minecraft:': "", '_': ""}), 'size': 32}) }}" />
+                        </div>
+                        <div class="inventory-head">
+                            {{ inventory.id | replace ({'minecraft:': ""}) }}
+                        </div>
+                        <div class="inventory-details">
+                            {% for tag, value in inventory.tags %}
+                                <div>
+                                    <b>{{ tag }}:</b>
+                                    {% if tag=='Enchantments' %}
+                                        <ul>
+                                            {% for enchant in value %}
+                                                <li>
+                                                    {{ enchant.id | replace ({'minecraft:': ""}) }}:
+                                                    <span class="value">{{ enchant.lvl }}</span>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% else %}
+                                        <span class="value">{{ value }}</span>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
     </div>
 
 </div>
