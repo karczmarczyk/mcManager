@@ -5,8 +5,6 @@ namespace App\Service;
 
 
 use App\Repository\PlayerRepository;
-use App\Service\Dto\Enchantment;
-use App\Service\Dto\InventoryItem;
 use App\Service\Dto\Player;
 use App\Service\Dto\PlayerDetails;
 use App\Utils\FileTool;
@@ -42,6 +40,11 @@ class PlayerService
     private $playerRepository;
 
     /**
+     * @var NbtPlayerService
+     */
+    private $nbtPlayerService;
+
+    /**
      * PlayerService constructor.
      * @param SshService $conn
      * @param FileManagerService $fileManagerService
@@ -49,10 +52,12 @@ class PlayerService
      * @param MinecraftServerService $minecraftServerService
      * @param EntityManagerInterface $entityManager
      * @param PlayerRepository $playerRepository
+     * @param NbtPlayerService $nbtPlayerService
      */
     public function __construct(SshService $conn, FileManagerService $fileManagerService,
                                 CommandService $commandService, MinecraftServerService $minecraftServerService,
-                                EntityManagerInterface $entityManager, PlayerRepository $playerRepository)
+                                EntityManagerInterface $entityManager, PlayerRepository $playerRepository,
+                                NbtPlayerService $nbtPlayerService)
     {
         $this->conn = $conn;
         $this->fileManager = $fileManagerService;
@@ -60,6 +65,7 @@ class PlayerService
         $this->minecraftServerService = $minecraftServerService;
         $this->em = $entityManager;
         $this->playerRepository = $playerRepository;
+        $this->nbtPlayerService = $nbtPlayerService;
     }
 
     /**
@@ -114,70 +120,21 @@ class PlayerService
     public function getPlayerDetails ($uuid): PlayerDetails
     {
         $content = $this->getUserFileContentByUuid($uuid);
-
-        $nbtService = new \Nbt\Service(new \Nbt\DataHandler());
-        $tree = $nbtService->readString($content);
+        $tree = $this->nbtPlayerService->getNbtTreeFromContent($content);
 
         $playerDetails = new PlayerDetails ();
-        $playerDetails->setInventory($this->getInventory($tree));
+        $playerDetails->setInventory($this->nbtPlayerService->getInventory($tree));
+        $playerDetails->setXpLvl($this->nbtPlayerService->getXpLvl($tree));
+        $playerDetails->setXpP($this->nbtPlayerService->getXpP($tree));
+        $playerDetails->setSpawnXYZ($this->nbtPlayerService->getSpawnXYZ($tree));
+        $playerDetails->setPosXYZ($this->nbtPlayerService->getPosXYZ($tree));
+        $playerDetails->setHealth($this->nbtPlayerService->getHealth($tree));
+        $playerDetails->setFirstPlayed((int)($this->nbtPlayerService->getFirstPlayed($tree)/1000));
+        $playerDetails->setLastPlayed((int)($this->nbtPlayerService->getLastPlayed($tree)/1000));
+        $playerDetails->setFoodExhaustionLvl($this->nbtPlayerService->getFoodExhaustionLvl($tree));
+        $playerDetails->setFoodLvl($this->nbtPlayerService->getFoodLvl($tree));
 
         return $playerDetails;
-    }
-
-    /**
-     * @param $tree
-     * @return array
-     */
-    public function getInventory ($tree): array
-    {
-        $inventoryList = [];
-
-        $Inventory = $tree->findChildByName('Inventory');
-        foreach ($Inventory->getChildren() as $child) {
-
-            $inventory = new InventoryItem();
-
-            foreach($child->getChildren() as $item) {
-
-                if ($item->getName() == 'Slot') {
-                    $inventory->setSlot($item->getValue());
-                }
-                else if ($item->getName() == 'id') {
-                    $inventory->setId($item->getValue());
-                }
-                else if ($item->getName() == 'Count') {
-                    $inventory->setCount($item->getValue());
-                }
-                else if ($item->getValue()==NULL) {
-                    foreach($item->getChildren() as $tag) {
-                        if ($tag->getName() == 'Enchantments') {
-                            // enchant - lista
-                            $tagT = [];
-                            foreach ($tag->getChildren() as $ttKey=>$t) {
-                                $enchantment = new Enchantment();
-                                foreach ($t->getChildren() as $tt) {
-                                    if ($tt->getName() == "id") {
-                                        $enchantment->setId($tt->getValue());
-                                    }
-                                    else if ($tt->getName() == "lvl") {
-                                        $enchantment->setLvl($tt->getValue());
-                                    }
-                                    $tagT[$ttKey] = $enchantment;
-                                }
-                            }
-                            $inventory->addTag($tag->getName(), $tagT);
-                        } else {
-                            // inne jednowymiarowe
-                            $inventory->addTag($tag->getName(), $tag->getValue());
-                        }
-                    }
-                }
-            }
-
-            $inventoryList[$inventory->getSlot()] = $inventory;
-        }
-
-        return $inventoryList;
     }
 
     /**

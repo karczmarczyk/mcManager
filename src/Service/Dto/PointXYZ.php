@@ -10,9 +10,9 @@ class PointXYZ
     /**
      * @return mixed
      */
-    public function getX()
+    public function getX(): int
     {
-        return $this->x;
+        return (int) $this->x;
     }
 
     /**
@@ -26,9 +26,9 @@ class PointXYZ
     /**
      * @return mixed
      */
-    public function getY()
+    public function getY(): int
     {
-        return $this->y;
+        return (int) $this->y;
     }
 
     /**
@@ -42,9 +42,9 @@ class PointXYZ
     /**
      * @return mixed
      */
-    public function getZ()
+    public function getZ(): int
     {
-        return $this->z;
+        return (int) $this->z;
     }
 
     /**
