@@ -38,6 +38,11 @@ class PlayerDetails
         return $this->xpP;
     }
 
+    public function getXpPHuman()
+    {
+        return round($this->getXpP()*100, 2);
+    }
+
     /**
      * @param mixed $xpP
      */
