@@ -18,7 +18,7 @@ class RankController extends AbstractController
     {
         $stat = $rankService->getLastStat();
         $rank = $rankService->getBestInCategories($stat->getId(),[
-            new StatDTO("minecraft:custom", "minecraft:play_one_minute"),
+            new StatDTO("minecraft:custom", "minecraft:play_time"),
             new StatDTO("minecraft:custom", "minecraft:time_since_death"),
             new StatDTO("minecraft:custom", "minecraft:deaths", StatDTO::$ASC),
             new StatDTO("minecraft:custom", "minecraft:sleep_in_bed"),
